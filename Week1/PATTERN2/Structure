@@ -1,0 +1,14 @@
+FactoryMethodPatternExample/
+└── src/
+    └── com/
+        └── example/
+            └── factory/
+                |___Document.java
+                    WordDocument.java
+                    PdfDocument.java
+                    ExcelDocument.java
+                    DocumentFactory.java
+                    WordFactory.java
+                    PdfFactory.java
+                    ExcelFactory.java
+                    Main.java
