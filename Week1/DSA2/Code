@@ -1,0 +1,13 @@
+def forecast_recursive(initial_value, growth_rate, years):
+    if years == 0:
+        return initial_value
+    return forecast_recursive(initial_value, growth_rate, years - 1) * (1 + growth_rate)
+
+# Sample usage
+initial = 10000  
+rate = 0.1      
+years = 5      
+
+
+future_recursive = forecast_recursive(initial, rate, years)
+print(f"Forecasted value after {years} years: ₹{future_recursive:.2f}")
