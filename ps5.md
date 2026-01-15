@@ -5,7 +5,7 @@
 
 ## 1. Understanding of the Real-World Cyber Security Problem
 
-The Quantum Threat Landscape
+### The Quantum Threat Landscape
 
 Quantum computing is rapidly developing, and it is a serious, long-term threat to the cryptography we use today. When sufficiently powerful quantum computers are built, Shor’s algorithm will enable them to break not only RSA but also the more general public-key cryptosystems Diffie-Hellman and Elliptic Curve Cryptography in polynomial time. That means that the very cornerstone of modern digital security could come crashing down, exposing billions of encrypted communications and sensitive digital operations.
 
@@ -15,7 +15,7 @@ One of the most dangerous immediate risks is the “harvest now, decrypt later�
 
 This becomes particularly alarming because sensitive data may remain valuable for years, such as financial transactions, healthcare records, government communications, and personal messages. Even though such communications may look protected today, they could be exposed in the future.
 
-The Mobile & IoT Challenge
+### The Mobile & IoT Challenge
 
 For example, post-quantum cryptographic algorithms such as CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium for digital signatures are immune against quantum attacks but also include several main challenges with respect to real-world implementation, mainly on mobile and IoT devices.
 
@@ -30,7 +30,7 @@ Energy Drain: If continuous PQC usage increased the battery drain in mobile devi
 Latency Impact: Real-time messaging can have an additional 50-200 ms delay per operation.
 
 
-The Adoption Dilemma
+### The Adoption Dilemma
 
 This is partly due to the fact that messaging apps offer their services with quite fast message delivery-usually within sub-100 ms; a fully postquantum messaging design would degrade this user experience.
 
@@ -43,14 +43,13 @@ The challenge is very applicable to India because India is highly mobile-first a
 
 ## 2. Proposed Solution and Technical Approach
 
-Hybrid post-quantum security model
+### Hybrid post-quantum security model
 
 The proposed solution to solve this is a hybrid cryptographic framework, combining classical algorithms and post-quantum cryptography optimally. The idea behind it goes as follows:
 
 Use quantum-resistant methods where they matter most and keep the protocol lightweight wherever possible.
 
-Three-Tier Security Architecture
-
+### Three-Tier Security Architecture
 
 Tier 1: Hybrid Key Exchange (Session Establishment)
 
@@ -89,7 +88,7 @@ Authentication mode adapts to message sensitivity and device capability:
 ●	System automatically determines authentication strength based on context
 
 
-Protocol Flow
+### Protocol Flow
 
 1.	Initialization Phase: Hybrid key exchange (classical + PQC)
 
@@ -102,7 +101,7 @@ Protocol Flow
 5.	Forward Secrecy: Session keys deleted after use to isolate damage
 
 
-Device-Aware Optimization
+### Device-Aware Optimization
 
 The protocol is tuned depending on device class:
 
@@ -125,7 +124,7 @@ Technical Advantages
 ●	Fail-safe design: classical security still applies if PQC fails
 
 
-Security Mechanisms
+### Security Mechanisms
 
 Forward Secrecy Implementation
 
@@ -202,8 +201,7 @@ Threat Model Coverage
 
 ## 4. Expected Outcomes
 
-Quantifiable Security Guarantees
-
+### Quantifiable Security Guarantees
 
 Quantum Resistance
 
@@ -342,7 +340,7 @@ Advantages Over Existing Approaches
 
 Strategic Hybrid Architecture This framework uses PQC only where it provides the most security benefit, keeping runtime efficient and lightweight. 
 
-Key Differentiators 
+### Key Differentiators 
 
 
 1. Adaptive Security Profiles 
@@ -396,7 +394,7 @@ Built entirely on NIST-standardized algorithms, this allows:
 ●	Vendor neutrality 
 
 
-Unique Value Proposition Summary 
+### Unique Value Proposition Summary 
 
 ●	Mobile Users: quantum-safe messaging with no noticeable performance impact 
 
@@ -411,7 +409,7 @@ Unique Value Proposition Summary
 
 ## 7. Product Roadmap and End-Use Cases
 
-# Roadmap
+### Roadmap
 
 Phase 1: Protocol Design and Architecture Validation (Months 1-2)
 
@@ -477,7 +475,7 @@ Phase 5: Pilot Deployment and Community Engagement (Months 11-12)
 
 ●	Deliverable: pilot case studies and public library release 
 
-# End-Use Cases and Target Users 
+### End-Use Cases and Target Users 
 
 1. Secure Mobile Messaging 
 
@@ -549,15 +547,15 @@ Phase 5: Pilot Deployment and Community Engagement (Months 11-12)
 
 Scalability and Market Potential 
 
-Addressable Market 
+### Addressable Market 
 
 ●	750 million smartphone users in India 
 
 ●	1.1 billion IoT devices in India by 2026 
 
-●	Secure messaging market projected to reach $8.5 billion by 2027 
+●	Secure messaging market projected to reach Rs. 765 billion by 2027 
 
-●	IoT security market expected to be $36.6 billion by 2026 Adoption Strategy - Open-source core library 
+●	IoT security market expected to be Rs. 3.3 trillion by 2026 Adoption Strategy - Open-source core library 
 
 ●	Commercial enterprise SDK - Government pilots - Academic partnerships for validation 
 
