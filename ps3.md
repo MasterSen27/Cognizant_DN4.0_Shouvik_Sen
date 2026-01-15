@@ -272,64 +272,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 
 
 ### Data Flow: Packet Processing Pipeline
+<img width="8192" height="5242" alt="DNS Tunneling Attack Flow-2026-01-15-093314" src="https://github.com/user-attachments/assets/a507c5f9-8670-419d-b08c-913dbc67cc67" />
 
-```
-Packet Arrival (10 Gbps NIC)
-        │
-        ▼
-┌───────────────────┐
-│  XDP Hook Point   │  ◄─── Earliest possible interception
-│  (Network Driver) │
-└────────┬──────────┘
-         │ <1ms
-         ▼
-┌───────────────────┐
-│ Parse Headers     │  • IP src/dst, protocol
-│ (eBPF Program)    │  • TCP/UDP ports, flags
-└────────┬──────────┘  • Packet size, TTL
-         │
-         ▼
-┌───────────────────┐
-│ Lookup IP Stats   │  • BPF_MAP_LOOKUP(IP_STATS_MAP)
-│ (eBPF Map)        │  • Increment packet/byte counters
-└────────┬──────────┘  • Update timestamp
-         │
-         ▼
-┌───────────────────┐
-│ Check Blacklist   │  • BPF_MAP_LOOKUP(BLACKLIST_MAP)
-│                   │  • If found → XDP_DROP (immediate)
-└────────┬──────────┘
-         │ Not blacklisted
-         ▼
-┌───────────────────┐
-│ Check Rate Limit  │  • Compare pps/bps against threshold
-│                   │  • If exceeded → Apply rate limit or drop
-└────────┬──────────┘
-         │ Within limits
-         ▼
-┌───────────────────┐
-│ XDP_PASS          │  • Allow packet to kernel stack
-│                   │  • Continue to application
-└───────────────────┘
-
-Meanwhile (asynchronous in user space):
-┌───────────────────┐
-│ ML Engine Polling │  • Every 100ms: read IP_STATS_MAP
-│ (User Space)      │  • Aggregate features (50+)
-└────────┬──────────┘  • Run ML inference
-         │
-         ▼
-┌───────────────────┐
-│ Classify Traffic  │  • Benign (score < 0.3)
-│ (LightGBM Model)  │  • Suspicious (0.3 < score < 0.7)
-└────────┬──────────┘  • Malicious (score > 0.7)
-         │
-         ▼
-┌───────────────────┐
-│ Update eBPF Maps  │  • Add IPs to BLACKLIST_MAP (if malicious)
-│                   │  • Update RATE_LIMIT_MAP (if suspicious)
-└───────────────────┘  • Remove expired entries
-```
 
 ### Security Mechanisms
 
