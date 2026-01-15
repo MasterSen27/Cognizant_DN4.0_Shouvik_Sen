@@ -436,9 +436,11 @@ Because eBPF/XDP is mature and production-grade (used by Cloudflare, Facebook, a
 ## 4. Expected Outcomes
 
 Performance Metrics
+
 Latency (End-to-End Processing Time)
 
 Because of kernel-level packet inspection, the system is anticipated to function at extremely low latency:
+
 ●	eBPF/XDP packet processing time: <1 ms
 
 ●	<0.5 ms for feature extraction plus counter updates
@@ -452,16 +454,21 @@ Because of kernel-level packet inspection, the system is anticipated to function
 Overall goal: a response time of less than 50 milliseconds from detection to complete mitigation
 
 Throughput
+
 The platform is intended for situations involving high speeds:
 
 ● Capacity of a single server: 10–40 Gbps (based on CPU cores and NIC capability)
+
 ● A 10-core server can handle 10–14 million packets per second.
+
 ● 100,000–1,000,000 concurrent connections were monitored.
+
 ● Goal: 10 Gbps full line-rate processing without packet loss
 
 Accuracy of Detection
 
 ●	Anticipated detection performance objectives:
+
 >97% is the true positive rate (attacks correctly identified).
 
 ●	False positive rate (erroneously blocked legitimate traffic): less than 2%
@@ -473,14 +480,15 @@ Accuracy of Detection
 ●	Goal: maintain false positives below 3% even during real spikes.
 
 Differentiating Flash-Crowds
-●	Avoiding the traditional "flash crowd = attack" error is a significant highlight:
-Accurately detect real spikes: >95%
+
+●	Avoiding the traditional "flash crowd = attack" error is a significant highlight: Accurately detect real spikes: >95%
 
 ●	Compared to threshold systems, reduce false positives during peak hours by 70–80%.
 
 ●	Within one to two hours, baseline adjusts and converges.
 
 Resource Utilization
+
 CPU overhead
 
 One of the main design priorities is CPU overhead efficiency:
@@ -504,23 +512,27 @@ Memory usage anticipated during deployment:
 ●	Total RAM usage: less than 2 GB
 
 Overhead of the Network
+
 ●	Because all protection occurs in-line, the system doesn't add any additional bandwidth burden.
 
 ●	Redirecting or scrubbing is not necessary.
 
 ●	No reliance on outside network paths
+
 Scalability
 
 Scaling Vertically
-●	Scaling a single server with CPU capacity: 20-core servers can achieve speeds of over 40 Gbps.
 
+●	Scaling a single server with CPU capacity: 20-core servers can achieve speeds of over 40 Gbps.
 
 ●	ISP edge scale is supported with 10–40 Gbps per server.
 
 ●	An entire data center uplink can be safeguarded by a single server.
 
 Scaling Horizontally
+
 To safeguard extremely big networks:
+
 ●	Install several instances on different edge routers.
 
 ●	Scales organically for telecom networks and ISPs
@@ -533,15 +545,13 @@ Hardware Requirements:
 
 ●	4GB RAM, 10Gbps NIC, 4-core CPU, minimum
 
-
 ●	Suggested: 40Gbps NIC, 8GB RAM, and 10-core CPU
 
 ●	OS: Linux kernel 5.0+
 
 
-
-
 Deployment Models 
+
 ● On-Premises: dedicated DDoS appliance servers, gateways, and edge routers
 
 ● Cloud: SR-IOV NIC-equipped virtual machines and containers on AWS, Azure, and GCP
@@ -549,14 +559,19 @@ Deployment Models
 ● Hybrid: cloud backup scrubbing plus edge protection first
 
 Compatibility of Integration
+
 ●	supports enterprise SOC ecosystems and contemporary monitoring:
+
 Utilizes iptables and nftables.
 
 ●	Integration of SIEM using JSON and Syslog
 
 ●	REST API administration
+
 Real-World Impact
+
 Businesses: 
+
 ●	Prevent losses during spikes in flash sales
 
 ●	Protect platforms that are sensitive to latency, such as fintech and UPI.
@@ -564,6 +579,7 @@ Businesses:
 ●	Cut DDoS expenses by 60–80%
 
 ISPs/Telecom Operators
+
 ●	Protection should be implemented at the network edge by ISPs and telecom operators.
 
 ●	Provide managed services for DDoS protection.
@@ -571,6 +587,7 @@ ISPs/Telecom Operators
 ●	Reduce bandwidth costs by dropping attack traffic at ingress.
 
 Government & Critical Infra
+
 ●	During peak events, make sure portals are still accessible for government and critical infrastructure.
 
 ●	Safeguard transportation, water, and power infrastructure.
@@ -604,27 +621,43 @@ Government & Critical Infra
 ### Performance Benchmarking
 
 Latency Benchmarking
+
 Comparison of mitigation time:
+
 Traditional Scrubbing Center:
+  
   Detection: 30-60s
+  
   BGP Rerouting: 60-120s
+  
   Scrubbing: 1-3s
+  
   Total: 90-180s
 
 Cloud WAF:
+  
   Detection: 10-30s
+  
   DNS Rerouting: 30-60s
+  
   Processing: 100-300ms
+  
   Total: 40-90s
 
 Hardware Appliance:
+  
   Detection: 5-15s
+  
   Processing: 50-200ms
+  
   Total: 5-15s
 
 Proposed Kernel-Level System:
+  
   Detection: 100ms-1s
+  
   XDP Processing: <10ms
+  
   Total: <2s
 
 Therefore, this system reduces mitigation from minutes to less than two seconds when compared to scrubbing centers.
@@ -642,24 +675,37 @@ Therefore, this system reduces mitigation from minutes to less than two seconds 
 **Cost-Effectiveness Analysis (3-Year TCO)**
 
 Traditional Scrubbing Center:
+  
   Setup: Rs.4,50,000
+  
   Monthly: Rs.18,00,000 × 36 = Rs.6,48,00,000
+  
   Total: Rs.6,52,50,000
 
 Cloud WAF:
+  
   Setup: Rs.1,80,000
+  
   Annual: Rs.36,00,000 × 3 = Rs.1,08,00,000
+  
   Total: Rs.1,09,80,000
 
 Hardware Appliance:
+  
   CapEx: Rs.1,80,00,000
+  
   Maintenance: Rs.18,00,000 × 3 = Rs.54,00,000
+  
   Total: Rs.2,34,00,000
 
 Proposed System:
+  
   Hardware: Rs.7,20,000
+  
   Dev (one-time): Rs.13,50,000
+  
   Maintenance: Rs.1,80,000 × 3 = Rs.5,40,000
+  
   Total: Rs.26,10,000
 
 Savings achieved:
@@ -674,12 +720,12 @@ Savings achieved:
 
 | **Attack Type** | **Scrubbing Centers** | **Cloud WAF** | **Hardware Appliances** | **Proposed System** |
 |-----------------|----------------------|---------------|------------------------|---------------------|
-| **Volumetric (UDP/ICMP Floods)** | ✅ Excellent | ✅ Excellent | ✅ Excellent | ✅ Excellent |
-| **Protocol Exploits (SYN Floods)** | ✅ Good | ⚠️ Limited (app-layer focus) | ✅ Good | ✅ Excellent (SYN cookies in kernel) |
-| **Application Layer (HTTP Floods)** | ✅ Good | ✅ Excellent | ⚠️ Limited | ✅ Good (with user-space integration) |
-| **Low-and-Slow Attacks** | ⚠️ Limited | ✅ Good | ⚠️ Limited | ✅ Excellent (behavioral ML) |
-| **Zero-Day Exploits** | ❌ Poor (signature-dependent) | ⚠️ Moderate | ❌ Poor | ✅ Good (anomaly-based ML) |
-| **Encrypted Traffic (HTTPS/TLS)** | ⚠️ Limited (can't inspect payload) | ✅ Good (TLS termination) | ⚠️ Limited | ✅ Good (connection pattern analysis) |
+| **Volumetric (UDP/ICMP Floods)** | Excellent | Excellent | Excellent | Excellent |
+| **Protocol Exploits (SYN Floods)** | Good | Limited (app-layer focus) | Good | Excellent (SYN cookies in kernel) |
+| **Application Layer (HTTP Floods)** | Good | Excellent | Limited | Good (with user-space integration) |
+| **Low-and-Slow Attacks** | Limited | Good | Limited | Excellent (behavioral ML) |
+| **Zero-Day Exploits** | Poor (signature-dependent) | Moderate | Poor | Good (anomaly-based ML) |
+| **Encrypted Traffic (HTTPS/TLS)** | Limited (can't inspect payload) | Good (TLS termination) | Limited | Good (connection pattern analysis) |
 
 ---
 
@@ -690,6 +736,7 @@ Core Differentiators
 1. Processing at the Kernel Level with No External Dependencies
 
 In contrast to cloud services and scrubbing, which divert traffic, this system operates:
+
 Directly in the XDP layer of the Linux kernel
 
 ●	There is no delay in user space.
