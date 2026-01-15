@@ -254,81 +254,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 ## 3. System Architecture
 
 ### High-Level Architecture Diagram
+<img width="7748" height="7642" alt="DNS Tunneling Attack Flow-2026-01-15-075337" src="https://github.com/user-attachments/assets/a7dac62e-fef5-4ad2-be01-1886aed81121" />
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                   Intelligent DDoS Mitigation System                 │
-└─────────────────────────────────────────────────────────────────────┘
-
-                          Internet / External Network
-                                      │
-                                      ▼
-                          ┌───────────────────────┐
-                          │   Network Interface   │
-                          │  (Physical NIC / eth0)│
-                          └───────────┬───────────┘
-                                      │
-                ┌─────────────────────▼─────────────────────┐
-                │         XDP Hook (Kernel Space)          │
-                │   ═══════════════════════════════════     │
-                │   eBPF Program: Feature Extraction        │
-                │   • Packet parsing (IP, TCP, UDP)         │
-                │   • Traffic statistics (per-IP counters)  │
-                │   • Connection tracking                   │
-                └─────────────────┬─────────────────────────┘
-                                  │
-                    ┌─────────────▼─────────────┐
-                    │   eBPF Maps (Shared Data) │
-                    │ ────────────────────────── │
-                    │ • Per-IP packet counters   │
-                    │ • Connection state table   │
-                    │ • Blacklist/whitelist IPs  │
-                    │ • Statistical baselines    │
-                    └────────┬──────────┬────────┘
-                             │          │
-              ┌──────────────┘          └──────────────┐
-              ▼                                        ▼
-┌──────────────────────────┐            ┌──────────────────────────┐
-│  Statistical Analyzer    │            │   ML Classification      │
-│    (User Space)          │            │      Engine              │
-├──────────────────────────┤            ├──────────────────────────┤
-│ • Read eBPF map data     │            │ • Feature aggregation    │
-│ • Compute baselines      │            │ • LightGBM inference     │
-│ • Anomaly detection      │            │ • Attack type detection  │
-│ • Adaptive thresholds    │            │ • Threat scoring         │
-└────────────┬─────────────┘            └────────────┬─────────────┘
-             │                                       │
-             └───────────────┬───────────────────────┘
-                             ▼
-                 ┌────────────────────────┐
-                 │  Mitigation Decision   │
-                 │       Engine           │
-                 ├────────────────────────┤
-                 │ • Classify: Benign/    │
-                 │   Suspicious/Malicious │
-                 │ • Determine mitigation │
-                 │   strategy             │
-                 │ • Update eBPF maps     │
-                 └──────────┬─────────────┘
-                            │
-                            ▼
-                 ┌────────────────────────┐
-                 │  eBPF Mitigation       │
-                 │  Actions (XDP Layer)   │
-                 ├────────────────────────┤
-                 │ • XDP_DROP (blacklist) │
-                 │ • Rate limiting        │
-                 │ • XDP_PASS (whitelist) │
-                 │ • XDP_TX (challenge)   │
-                 └──────────┬─────────────┘
-                            │
-                            ▼
-                 ┌────────────────────────┐
-                 │  Legitimate Traffic    │
-                 │  → Kernel Network Stack│
-                 │  → Application Layer   │
-                 └────────────────────────┘
-```
 
 ### Detailed Component Architecture
 
