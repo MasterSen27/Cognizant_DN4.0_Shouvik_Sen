@@ -653,9 +653,23 @@ This hybrid lightweight post-quantum messaging framework tackles one of today’
 With a clear roadmap and strong real-world applications, it can significantly contribute to a future where digital communications are quantum secure.
 
 ---
+## Declarations
 
-## Team Commitment
+**Originality:**
+This proposal and the proposed solution are entirely original work created by our team. We have not copied, plagiarized, or used AI-generated content. All ideas, technical approaches, and documentation are the result of our own research, analysis, and innovation.
+
+
+---
+
+**Contact Information:**
+
+- **Team Lead**: Rajdeep Das
+
+- **Email**: Rajdeep.Das2025@iem.edu.in
+
+- **Institution**: Institute of Engineering and Management
+
+- **Team Members**: Shivyansh Rai, Shouvik Sen, Mekhla Sen, Archishman Das
+
 
 Our team is committed to progressing this idea from concept to Minimum Viable Product (MVP) within the CSIC 1.0 framework. We will actively engage with mentors, incorporate feedback, and dedicate the necessary time and effort to deliver a production-ready quantum-safe messaging solution that serves India's mobile-first, IoT-driven digital ecosystem.
-
-**Contact**: [Team Lead Email] | **Institution**: [Your Institution Name]
