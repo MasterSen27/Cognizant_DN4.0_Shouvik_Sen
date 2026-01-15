@@ -278,7 +278,7 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 ### Security Mechanisms
 
 **1. Multi-Layer Defense**
-<img width="1240" height="6525" alt="DNS Tunneling Attack Flow-2026-01-15-094100" src="https://github.com/user-attachments/assets/78cf5498-9507-4a8d-ae06-4db81212d29c" />
+<img width="1240" height="6525" alt="DNS Tunneling Attack Flow-2026-01-15-094100" src="https://github.com/user-attachments/assets/6d8081c2-774b-4841-9ea5-cd1467baa26e" />
 
 
 **2. Threat Intelligence Integration**
