@@ -740,17 +740,25 @@ In contrast to cloud services and scrubbing, which divert traffic, this system o
 Directly in the XDP layer of the Linux kernel
 
 ●	There is no delay in user space.
+
 ●	No information is leaving the company.
+
 ●	No reliance on third parties
+
 ●	No recurring subscriptions for protection
 
 This results in:
+
 ●	latency that is 10–50 times lower than that of user-space solutions.
+
 ●	Complete data sovereignty
+
 ●	Robust resilience in the face of upstream disruptions
 
 2. Flash-Crowd Intelligence + Adaptive Machine Learning
+
 ●	One of the most crucial differentiators is this.
+
 ●	During viral spikes, baselines automatically adjust rather than blocking users.
 
 ●	ML recognizes patterns in behavior.
@@ -762,8 +770,8 @@ This results in:
 Therefore, the system stays stable without endangering actual users even if traffic increases 50 times.
 
 3. Hardware-Agnostic and Software-Defined
-●	Principal benefits:Commodity x86 hardware is used.
 
+●	Principal benefits:Commodity x86 hardware is used.
 
 ●	Constructed using open-source eBPF/XDP
 
@@ -774,7 +782,9 @@ Therefore, the system stays stable without endangering actual users even if traf
 ●	Even during attacks, only 10% to 15% of the CPU is used.
 
 Economically, scrubbing models cost Rs. 6.5Cr compared to Rs. 26.1L/3 years.
+
 4. Real-Time Automated Reaction
+
 ●	In less than two seconds, mitigation triggers
 
 ●	There is no need for manual intervention.
@@ -799,7 +809,7 @@ Unique Value Proposition Summary
 Businesses: Reduce costs significantly compared to scrubbing while maintaining service availability with less than 2% false positives during spikes.
 ISPs:
 
- Provide DDoS protection as a service and implement scalable line-rate mitigation at the edge.
+Provide DDoS protection as a service and implement scalable line-rate mitigation at the edge.
 
 Government: Maintain data sovereignty and budget viability while safeguarding citizen services during periods of high usage.
 
@@ -809,104 +819,162 @@ Government: Maintain data sovereignty and budget viability while safeguarding ci
 Development Roadmap
 
 Phase 1 (Months 1–2): Architecture + Validation
+
 Objectives:
+
 ●	Complete the architecture
+
 ●	Set up the eBPF toolchain and Linux kernel.
+
 ●	Define ML feature sets and eBPF map schemas.
 
 Deliverables:
+
 ●	Technical specification document
+
 ●	Diagrams of architectur
+
 ●	Pseudocode for eBPF
+
 ●	ML feature engineering strategy
 
 Phase 2 (Months 3–5): Implementation + ML Model
+
 eBPF tasks:
+
 ●	Packet parser
+
 ●	Maps-based per-IP counters
+
 ●	Monitoring connections
+
 ●	Blacklist/whitelist search
 
 XDP actions
 
 ML tasks:
+
 ●	Dataset collection + labeling
+
 ●	50+ feature engineering
+
+
 ●	LightGBM training
+
 ●	Validation: 97% TP, <2% FP
+
 ●	Optimize inference: <5ms
 
 Deliverables:
+
 ●	Feature extraction module
+
 ●	ML model with metrics report
+
 ●	Prototype with traffic classification + blacklisting
 
 Phase 3 (Months 6–8): Mitigation + Optimization + Integration
+
 Mitigation:
+
 ●	Adaptive rate limiting
+
 ●	Selective/probabilistic dropping
+
 ●	SYN cookies
+
 ●	Traffic shaping/QoS
+
 ●	Graduated response escalation
 
 Optimization:
+
 ●	profiling + map optimization
+
 ●	multi-queue support
+
 ●	benchmarking
 
 Integration:
+
 ●	REST API
+
 ●	SIEM exports
+
 ●	Prometheus/Grafana
+
 ●	iptables/nftables integration
 
 
 Phase 4 (Months 9–10): Testing + Deployment Readiness
+
 Testing:
+
 ●	simulate floods, amplification, SYN, slowloris, HTTP floods
+
 ●	flash crowd testing
+
 ●	10–40Gbps stress test
+
 ●	fuzzing for eBPF safety
 
 Documentation:
+
 ●	deployment guide
+
 ●	tuning + troubleshooting
+
 ●	API reference
+
 ●	security hardening checklist
 
 Phase 5 (Months 11–12): Pilot Deployment + Open Source + Growth
+
 •	deploy in government trials, SMEs, and universities.
+
 •	Keep an eye on production performanc
+
 •	Open-source release with community documentation
+
 •	publish blogs and case studies.
+
 •	Presentations at conference
+
 •	Combining business strategy with customer discovery
 
 End-Use Cases and Target Users
 
 1. Telecom & ISPs
+ 
  Install at edge routers, safeguard distributed traffic exceeding 100 Gbps, and activate managed DDoS service.
 
 
 2. Cloud Service Providers
+ 
  Prevent the issue of noisy neighbours and safeguard tenants at the hypervisor level.
 
 3. Banks & Fintech
+ 
  Adhere to RBI resilience guidelines and maintain latency of less than 50 ms during attacks.
 
 4. Portals of Government
+ 
  Ensure data sovereignty and stop outages during registrations and results.
 
 5. Online shopping
+ 
  Protect crores of revenue by allowing flash-sale traffic while thwarting attacks.
 
 6. Business Networks
+ 
  VPN gateways, corporate infrastructure, and customer-facing services should all be protected.
 
 7. Critical infrastructure and healthcare
+ 
  OT/SCADA availability protection, telemedicine/EHR uptime.
 
 Market Potential
+
 ●	Indian DDoS market: Rs. 13.5–18B (2024), 25% CAGR
 
 ●	Global market: Rs. 405B (2024), Rs. 900B+ by 2028
@@ -914,67 +982,104 @@ Market Potential
 ●	Target: enterprises (60%), ISP (25%), government (15%)
 
 8. Impact, Scalability, and Sustainability
+
 National Impact
+
 ●	Boost the resilience of more than 100 government portals
+
 ●	Safeguard the UPI ecosystem
+
 ●	Safe core infrastructure for telecommunications
+
 ●	Protect IoT smart cities
 
 Economic:
+
 ●	Business savings of more than ₹500 crore per year
+
 ●	E-commerce revenue protection of more than ₹1,000 crore
+
 ●	create more than 500 cybersecurity jobs
 
 Scalability
 
 Vertical:
+ 
  4 cores → 10Gbps
+ 
  10 cores → 25Gbps
+ 
  20 cores → 40+Gbps
 Horizontal:
+
 - 100+Gbps aggregate edge defense
+
 - Cloud provider multi-Tbps scaling
 
 Sustainability
 
 Technical:
+
 ●	Monthly retraining
+
 ●	IPv6 future support
+
 ●	SmartNIC/DPU acceleration roadmap
+
 ●	Kubernetes integration possible
 
 Business:
+
 ●	open-core + managed service + licensing + support + channel partners
+
 ●	conservative revenue: Year1 ₹50L, Year2 ₹5Cr, Year3 ₹25Cr
 
 Environmental:
+
 ●	Reduced energy footprint due to efficient CPU usage
+
 ●	Prevents excessive energy consumption in the scrubbing centre
 
 Social:
+
 ●	Educate over a thousand engineers
+
 ●	Democratise security for small and startup businesses.
+
 ●	In line with Atmanirbhar Bharat and Digital India
 
 ## Conclusion
 
 The intelligent kernel-level DDoS mitigation system presented in this proposal significantly improves the detection and prevention of attacks.
+
 It addresses significant flaws in existing systems by providing:
+
 ●	XDP-based ultra-low latency protection
+
 ●	Behavioral machine learning that accurately detects flash crowds
+
 ●	Dynamic automated response that doesn't require human interventio
+
 ●	Significant cost savings over scrubbing, WAF, and appliances
+
 It is realistic, scalable, timely, and in line with national cybersecurity innovation priorities.
 
 ## Team Commitment
+
 Within the constraints of the challenge, the team pledges to deliver a production-grade MVP. Strong mentor feedback incorporation and milestone-based progress are guaranteed by the roadmap. 
+
 The group will:
 
 ● Participate actively with mentors
+
 ●	Observe all deadlines.
+
 ●	Put all of your effort into a functional system.
+
 ●	Work together with the security and open-source communities
+
 ●	Conduct pilot deployments for practical validation.
+
 ●	The goal is not only to win, but to contribute lasting cybersecurity infrastructure to India.
 
 ---
@@ -993,9 +1098,13 @@ We have no conflicts of interest and are eligible to participate in the Cyber Se
 ---
 
 **Contact Information:**
-- **Team Lead**: [Name]
-- **Email**: [Email Address]
-- **Institution**: [Institution Name]
-- **Team Members**: [List team members]
+
+- **Team Lead**: Rajdeep Das
+
+- **Email**: Rajdeep.Das2025@iem.edu.in
+
+- **Institution**: Institute of Engineering and Management
+
+- **Team Members**: Shivyansh Rai, Shouvik Sen, Mekhla Sen, Archishman Das
 
 **We look forward to transforming this innovative idea into a reality that strengthens India's digital infrastructure against DDoS threats.**
