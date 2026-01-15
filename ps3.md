@@ -264,43 +264,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 
 
 **2. Control Plane (User Space - ML & Management)**
+<img width="4720" height="6405" alt="DNS Tunneling Attack Flow-2026-01-15-090748" src="https://github.com/user-attachments/assets/e7f0b73d-838c-4bc1-b56e-b69e70bb06bd" />
 
-```
-┌───────────────────────────────────────────────────────────┐
-│              Traffic Analysis & ML Engine                  │
-├───────────────────────────────────────────────────────────┤
-│                                                           │
-│  ┌────────────────────┐      ┌─────────────────────┐    │
-│  │  Data Collection   │      │  Feature Engineering │    │
-│  │  • Poll eBPF maps  │─────▶│  • Aggregate stats   │    │
-│  │  • Read counters   │      │  • Compute entropy   │    │
-│  │  • Export metrics  │      │  • Time-series data  │    │
-│  └────────────────────┘      └──────────┬──────────┘    │
-│                                          ▼                │
-│               ┌──────────────────────────────────┐       │
-│               │  Statistical Baseline Analysis    │       │
-│               │  • Normal traffic patterns       │       │
-│               │  • Time-of-day variations        │       │
-│               │  • Anomaly detection (z-score)   │       │
-│               └──────────────┬───────────────────┘       │
-│                              ▼                            │
-│               ┌──────────────────────────────────┐       │
-│               │    ML Classification Model        │       │
-│               │  • LightGBM decision tree         │       │
-│               │  • Input: 50+ features            │       │
-│               │  • Output: Benign/Attack + score  │       │
-│               │  • Inference time: <5ms           │       │
-│               └──────────────┬───────────────────┘       │
-│                              ▼                            │
-│               ┌──────────────────────────────────┐       │
-│               │   Mitigation Policy Engine        │       │
-│               │  • Threat score → action mapping  │       │
-│               │  • Update blacklist/rate limits   │       │
-│               │  • Write to eBPF maps             │       │
-│               └───────────────────────────────────┘       │
-│                                                           │
-└───────────────────────────────────────────────────────────┘
-```
 
 **3. eBPF Map Structures (Shared Kernel-User Space Data)**
 
