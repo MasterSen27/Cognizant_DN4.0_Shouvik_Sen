@@ -874,10 +874,14 @@ We have no conflicts of interest and are eligible to participate in the Cyber Se
 ---
 
 **Contact Information:**
-- **Team Lead**: [Name]
-- **Email**: [Email Address]
-- **Institution**: [Institution Name]
-- **Team Members**: [List team members]
+
+- **Team Lead**: Rajdeep Das
+
+- **Email**: Rajdeep.Das2025@iem.edu.in
+
+- **Institution**: Institute of Engineering and Management
+
+- **Team Members**: Shivyansh Rai, Shouvik Sen, Mekhla Sen, Archishman Das
 
 **We look forward to transforming this innovative idea into a reality that strengthens India's digital infrastructure against DDoS threats.**
 
