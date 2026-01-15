@@ -4,11 +4,11 @@
 
 ## 1. EXECUTIVE SUMMARY
 
-Ransomware attacks on Android devices have evolved rapidly, targeting personal users, enterprises, and critical digital services. Most existing ransomware detection systems identify threats only after file encryption has begun, by which time irreversible damage has already occurred. This reactive approach results in data loss, service disruption, and financial harm to users.
+The Android ransomware attacks have been rapidly evolving and can target individual users, businesses, and important digital services. The majority of the ransomware detection systems currently in place detect threats too late, when the encryption of the files has started after which it is too late and they would have caused permanent damage. Such a reactive solution leads to loss of data, loss of service and loss of money to the users.
 
-**ARE-IPDIS** (Android Ransomware Early-Intent Prediction & Digital Immunity System) is an innovative prevention framework that predicts ransomware intent **before** encryption begins. By monitoring fine-grained application behavior and analyzing evolving threat patterns, the system enables proactive defense. A unique **Digital Immunity Layer** safely neutralizes malicious behavior while preserving device stability and user control, setting it apart from traditional reactive solutions.
+ARE-IPDIS (Android Ransomware Early-Intent Prediction & Digital Immunity System) is a new preventive architecture that anticipates the intention of ransomware and suppress it prior to the initiation of the encryption process. The system can be used to proactively protect by tracking the fine-grained application behavior and by understanding the changing threat patterns. It is different compared to traditional reactive solutions as it is based on a special Digital Immunity Layer that safely neutralizes malicious behavior without affecting device stability and user control.
 
-This solution addresses the critical gap in mobile cybersecurity, particularly for India's mobile-first digital ecosystem where smartphones serve as primary computing devices for millions of users.
+This solution would fill this critical gap in mobile cybersecurity especially the mobile first digital ecosystem in India where millions of people have smartphones as their main computing devices.
 
 ---
 
