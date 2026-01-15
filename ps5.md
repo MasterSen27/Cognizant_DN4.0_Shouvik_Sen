@@ -90,20 +90,8 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 ### Component Architecture
 
 **A. Cryptographic Core Module**
-```
-┌─────────────────────────────────────────────────────┐
-│         Cryptographic Abstraction Layer             │
-├─────────────────────────────────────────────────────┤
-│  ┌──────────────┐  ┌──────────────┐  ┌───────────┐ │
-│  │ Classical    │  │ Post-Quantum │  │  Hybrid   │ │
-│  │ Crypto Layer │  │ Crypto Layer │  │ Key Mgmt  │ │
-│  ├──────────────┤  ├──────────────┤  ├───────────┤ │
-│  │ • X25519     │  │ • Kyber-512  │  │ • KDF     │ │
-│  │ • ChaCha20   │  │ • Dilithium-2│  │ • Ratchet │ │
-│  │ • Poly1305   │  │ • SHA3       │  │ • Storage │ │
-│  └──────────────┘  └──────────────┘  └───────────┘ │
-└─────────────────────────────────────────────────────┘
-```
+<img width="1236" height="4690" alt="DNS Tunneling Attack Flow-2026-01-15-133010" src="https://github.com/user-attachments/assets/3e82a881-32cf-4770-8e75-2afc6e143d81" />
+
 
 **B. Protocol Stack**
 ```
