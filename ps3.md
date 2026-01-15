@@ -5,7 +5,7 @@
 
 ## 1. Understanding of the Real-World Cyber Security Problem
 
-The Evolution of DDoS Attacks
+### The Evolution of DDoS Attacks
 
 Even the largest-scale digital infrastructures can be taken down in a matter of minutes by Distributed Denial of Service (DDoS) attacks, which have evolved from the conventional traffic floods that were so prevalent only a short time ago.
 Many strategies are used in modern DDoS attacks, including volumetric floods (overwhelming network bandwidth),
@@ -24,7 +24,7 @@ The scale and frequency of the worldwide DDoS environment have increased dramati
 
 ● Economic Impact: Businesses are estimated to lose between Rs 10.8 million and Rs 180 million every hour due to DDoS outages.
 
-The Flash-Crowd vs Attack Dilemma
+### The Flash-Crowd vs Attack Dilemma
 
 The difficulty of distinguishing between genuine traffic surges and actual attacks is one of the main practical issues with DDoS mitigation.
 Events such as these can naturally cause a "flash-crowd" spike.
@@ -49,7 +49,7 @@ Revenue Loss: When mitigation triggers incorrectly, e-commerce platforms lose mi
 
 Reputational Damage: If portals are unresponsive at crucial times, citizens lose faith in government services.
 
-Limitations of Current Mitigation Approaches
+### Limitations of Current Mitigation Approaches
 
 1. Centralized Scrubbing Centers
 
@@ -99,7 +99,7 @@ Among the most popular and ineffective mitigation strategies:
 
 •	Single Metric: Using sophisticated attack patterns, it is easy to get around basic metrics like bandwidth/pps.
 
-India-Specific Challenges
+### India-Specific Challenges
 
 Scale and Urgency of Digital Services
 
@@ -156,7 +156,7 @@ Current solutions are unable to close this gap, making private platforms and nat
 
 ## 2. Proposed Solution and Technical Approach
 
-Core Innovation: Kernel-Level Intelligent Mitigation
+### Core Innovation: Kernel-Level Intelligent Mitigation
 
 This solution suggests a DDoS mitigation system that operates directly within the Linux kernel networking stack and is powered by machine learning.
 
@@ -182,7 +182,7 @@ This combination makes it possible for:
 ●	JIT compilation: for optimal speed, eBPF programs are compiled into native machine instructions.
 
 
-Three-Layer Architecture
+### Three-Layer Architecture
 
 Layer 1: Real-Time Feature Extraction (eBPF/XDP)
 
@@ -328,7 +328,7 @@ Mitigation takes place right within the kernel after classification:
 
 ●	Total latency from start to finish: less than 10 ms
 
-Key Technical Advantages
+### Key Technical Advantages
 
 1. Extremely Low Latency
 
@@ -372,7 +372,7 @@ Key Technical Advantages
 ●	Even when there are disruptions in the upstream internet, it continues to function.
 
 
-Technical Feasibility
+### Technical Feasibility
 
 Because eBPF/XDP is mature and production-grade (used by Cloudflare, Facebook, and Google), this is feasible within the challenge timeline.
 
@@ -435,7 +435,7 @@ Because eBPF/XDP is mature and production-grade (used by Cloudflare, Facebook, a
 
 ## 4. Expected Outcomes
 
-Performance Metrics
+### Performance Metrics
 
 Latency (End-to-End Processing Time)
 
@@ -453,7 +453,7 @@ Because of kernel-level packet inspection, the system is anticipated to function
 
 Overall goal: a response time of less than 50 milliseconds from detection to complete mitigation
 
-Throughput
+### Throughput
 
 The platform is intended for situations involving high speeds:
 
@@ -465,7 +465,7 @@ The platform is intended for situations involving high speeds:
 
 ● Goal: 10 Gbps full line-rate processing without packet loss
 
-Accuracy of Detection
+### Accuracy of Detection
 
 ●	Anticipated detection performance objectives:
 
@@ -479,7 +479,7 @@ Accuracy of Detection
 
 ●	Goal: maintain false positives below 3% even during real spikes.
 
-Differentiating Flash-Crowds
+### Differentiating Flash-Crowds
 
 ●	Avoiding the traditional "flash crowd = attack" error is a significant highlight: Accurately detect real spikes: >95%
 
@@ -487,7 +487,7 @@ Differentiating Flash-Crowds
 
 ●	Within one to two hours, baseline adjusts and converges.
 
-Resource Utilization
+### Resource Utilization
 
 CPU overhead
 
@@ -519,7 +519,7 @@ Overhead of the Network
 
 ●	No reliance on outside network paths
 
-Scalability
+### Scalability
 
 Scaling Vertically
 
@@ -539,7 +539,7 @@ To safeguard extremely big networks:
 
 ●	More than 100 Gbps aggregate protection is supported.
 
-Deployment Flexibility
+### Deployment Flexibility
 
 Hardware Requirements:
 
@@ -568,7 +568,7 @@ Utilizes iptables and nftables.
 
 ●	REST API administration
 
-Real-World Impact
+### Real-World Impact
 
 Businesses: 
 
@@ -731,7 +731,7 @@ Savings achieved:
 
 ## 6. Differentiation and Unique Value Proposition
 
-Core Differentiators
+### Core Differentiators
 
 1. Processing at the Kernel Level with No External Dependencies
 
@@ -816,7 +816,7 @@ Government: Maintain data sovereignty and budget viability while safeguarding ci
 
 ## 7. Product Roadmap and End-Use Cases
 
-Development Roadmap
+### Development Roadmap
 
 Phase 1 (Months 1–2): Architecture + Validation
 
@@ -942,7 +942,7 @@ Phase 5 (Months 11–12): Pilot Deployment + Open Source + Growth
 
 •	Combining business strategy with customer discovery
 
-End-Use Cases and Target Users
+### End-Use Cases and Target Users
 
 1. Telecom & ISPs
  
@@ -973,7 +973,7 @@ End-Use Cases and Target Users
  
  OT/SCADA availability protection, telemedicine/EHR uptime.
 
-Market Potential
+### Market Potential
 
 ●	Indian DDoS market: Rs. 13.5–18B (2024), 25% CAGR
 
@@ -1001,7 +1001,7 @@ Economic:
 
 ●	create more than 500 cybersecurity jobs
 
-Scalability
+### Scalability
 
 Vertical:
  
@@ -1016,7 +1016,7 @@ Horizontal:
 
 - Cloud provider multi-Tbps scaling
 
-Sustainability
+### Sustainability
 
 Technical:
 
