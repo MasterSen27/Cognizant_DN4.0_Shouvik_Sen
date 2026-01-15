@@ -5,29 +5,24 @@
 
 ## 1. Understanding of the Real-World Cyber Security Problem
 
-### The Quantum Threat Landscape
+The Quantum Threat Landscape
+Quantum computing is rapidly developing, and it is a serious, long-term threat to the cryptography we use today. When sufficiently powerful quantum computers are built, Shor’s algorithm will enable them to break not only RSA but also the more general public-key cryptosystems Diffie-Hellman and Elliptic Curve Cryptography in polynomial time. That means that the very cornerstone of modern digital security could come crashing down, exposing billions of encrypted communications and sensitive digital operations.
+Harvest Now, Decrypt Later (HNDL) Attacks
+One of the most dangerous immediate risks is the “harvest now, decrypt later” strategy. Here, attackers capture encrypted communications today; even if they can’t decrypt them, they can store them until quantum computers become powerful enough to crack them. Current predictions estimate this capability could arrive within 10–15 years.
+This becomes particularly alarming because sensitive data may remain valuable for years, such as financial transactions, healthcare records, government communications, and personal messages. Even though such communications may look protected today, they could be exposed in the future.
 
-The advent of quantum computing presents an existential threat to current cryptographic infrastructure. Quantum computers utilizing Shor's algorithm can break widely-deployed public-key cryptosystems including RSA, Diffie-Hellman, and Elliptic Curve Cryptography (ECC) in polynomial time. This vulnerability exposes billions of encrypted communications to future decryption attacks.
+The Mobile & IoT Challenge
+For example, post-quantum cryptographic algorithms such as CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium for digital signatures are immune against quantum attacks but also include several main challenges with respect to real-world implementation, mainly on mobile and IoT devices.
+Computational Overhead: PQC operations require 3-10x more CPU cycles than classical cryptography.
+Memory constraints: Public keys are 800 bytes to 1.5 KB, Private keys reach up to 2.4 KB hard for IoT devices to handle with only 32–128 KB RAM.
+Bandwidth Usage: Larger keys raise transmission costs, especially for IoT devices over cellular networks.
+Energy Drain: If continuous PQC usage increased the battery drain in mobile devices by 15-30%.
+Latency Impact: Real-time messaging can have an additional 50-200 ms delay per operation.
+The Adoption Dilemma
+This is partly due to the fact that messaging apps offer their services with quite fast message delivery-usually within sub-100 ms; a fully postquantum messaging design would degrade this user experience.
+That creates a real and serious gap: we have algorithms which can provide quantum safety, but most environments cannot practically deploy them because of resource limitations.
+The challenge is very applicable to India because India is highly mobile-first and digitally expanding. With more than 750 million smartphone users, India needs quantum-secure solutions that remain practical and usable.
 
-### Harvest Now, Decrypt Later (HNDL) Attacks
-
-The most immediate threat is the "harvest now, decrypt later" scenario, where adversaries collect encrypted traffic today with the intent to decrypt it once sufficiently powerful quantum computers become available (estimated within 10-15 years). Sensitive communications—financial transactions, healthcare records, government correspondence, and personal messages—face long-term exposure even if they appear secure today.
-
-### The Mobile and IoT Challenge
-
-While post-quantum cryptographic (PQC) algorithms like CRYSTALS-Kyber (key encapsulation) and CRYSTALS-Dilithium (digital signatures) offer quantum resistance, they introduce significant practical challenges:
-
-- **Computational Overhead**: PQC operations require 3-10x more CPU cycles than classical algorithms
-- **Memory Constraints**: Public keys range from 800 bytes to 1.5 KB, private keys up to 2.4 KB—problematic for IoT devices with 32-128 KB RAM
-- **Bandwidth Consumption**: Larger key sizes increase data transmission costs, critical for IoT devices on cellular networks
-- **Energy Drain**: Mobile devices experience 15-30% faster battery depletion with continuous PQC operations
-- **Latency Impact**: Real-time messaging experiences 50-200ms additional delay per operation
-
-### The Adoption Dilemma
-
-Current secure messaging solutions (Signal, WhatsApp, Telegram) prioritize user experience with sub-100ms message delivery. Full PQC implementation degrades this experience, creating a barrier to adoption. This creates a dangerous gap: theoretical quantum security exists but remains practically undeployable in resource-constrained environments.
-
-India's mobile-first digital ecosystem, with over 750 million smartphone users and projected 1.1 billion IoT devices by 2025 (smart cities, healthcare, industrial automation), requires quantum-safe solutions that don't compromise usability or device capabilities.
 
 ---
 
