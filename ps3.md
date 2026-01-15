@@ -13,7 +13,9 @@ Unfortunately, because malicious network traffic is now made to mimic real user 
 Current Attack Landscape Statistics
 
 The scale and frequency of the worldwide DDoS environment have increased dramatically:
+
 ● Attack Volume: DDoS attacks have now exceeded 1 Tbps, with a record-breaking attack recorded at 3.47 Tbps (Microsoft, 2021).
+
 ● Attack Frequency: DDoS attacks rose by 150% globally in 2023, with over 25 million attacks occurring in India alone each year.
 ● Attack Sophistication: Approximately 60% of attacks now employ multiple vectors simultaneously, rendering single-layer or conventional defense mechanisms useless.
 ● Economic Impact: Businesses are estimated to lose between Rs 10.8 million and Rs 180 million every hour due to DDoS outages.
