@@ -94,68 +94,22 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 
 
 **B. Protocol Stack**
-```
-┌─────────────────────────────────────────┐
-│     Application Layer (Messaging API)   │
-├─────────────────────────────────────────┤
-│   Session Management & Key Rotation     │
-├─────────────────────────────────────────┤
-│     Hybrid Secure Channel Protocol      │
-│  (Key Exchange + Message Encryption)    │
-├─────────────────────────────────────────┤
-│      Device Profile Adaptation Layer    │
-│   (Mobile / IoT Gateway / Constrained)  │
-├─────────────────────────────────────────┤
-│        Transport Layer (TCP/UDP)        │
-└─────────────────────────────────────────┘
-```
+<img width="1240" height="2835" alt="diagram-2026-01-15-133600" src="https://github.com/user-attachments/assets/73fb0579-5a9d-4891-a532-d6cd35efe0a6" />
+
 
 **C. Device Capability Detection**
-```
-Device Registration
-       ↓
-Capability Assessment
-   ├─ CPU: ARM Cortex / x86
-   ├─ RAM: Available memory
-   ├─ Battery: Power profile
-   └─ Network: Bandwidth availability
-       ↓
-Profile Assignment
-   ├─ High-Capability (Mobile)
-   ├─ Medium-Capability (IoT Gateway)
-   └─ Low-Capability (Sensors)
-       ↓
-Protocol Configuration
-   ├─ Full Hybrid (Mobile)
-   ├─ Gateway-Assisted (IoT)
-   └─ Symmetric-Only (Sensors)
-```
+<img width="3608" height="2785" alt="diagram-2026-01-15-133822" src="https://github.com/user-attachments/assets/ad4581a8-b263-4828-96fe-52b2a09e76f8" />
+
 
 ### Data Flow Architecture
 
 **Session Establishment (One-time PQC Overhead)**
-```
-┌─────────┐     ┌──────────────┐     ┌─────────┐
-│ Device  │────>│ Hybrid KEM   │────>│ Derive  │
-│  Keys   │     │ (X25519 +    │     │ Session │
-│ (Local) │     │  Kyber-512)  │     │   Key   │
-└─────────┘     └──────────────┘     └────┬────┘
-                                          │
-                                          ↓
-                                   ┌──────────────┐
-                                   │ K_session    │
-                                   │ (256-bit AES)│
-                                   └──────────────┘
-```
+<img width="930" height="1940" alt="diagram-2026-01-15-134350" src="https://github.com/user-attachments/assets/70eb50d7-dc87-495d-a639-f7fb0ab78257" />
+
 
 **Message Exchange (Lightweight Symmetric)**
-```
-Message → ChaCha20 Encryption → Poly1305 MAC → Network
-    ↑           ↑                    ↑
-    │       K_session            K_session
-    │
-Receive ← ChaCha20 Decryption ← Poly1305 Verify ← Network
-```
+<img width="2023" height="5285" alt="diagram-2026-01-15-134712" src="https://github.com/user-attachments/assets/dec482c8-084b-4a50-9a49-1b44b41cbb1a" />
+
 
 ### Security Mechanisms
 
