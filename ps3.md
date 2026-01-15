@@ -61,11 +61,13 @@ Hardware-based mitigation is costly and frequently antiquated:
 ●	Manual Configuration: Needs professional adjustment for policies and thresholds
 ●	Capacity Limits: The fixed throughput (1–10 Gbps) collapses in the face of contemporary large-scale attacks.
 4. Threshold-Based Detection
+
 Among the most popular and ineffective mitigation strategies:
 •	Rigid: Doesn't adjust to typical traffic variations (seasonal peaks, time of day).
 •	False Positives: During flash sales and viral spikes, actual users are blocked.
 •	Reactive: Only activates once the network has been compromised by attack traffic.
 •	Single Metric: Using sophisticated attack patterns, it is easy to get around basic metrics like bandwidth/pps.
+
 India-Specific Challenges
 Scale and Urgency of Digital Services
 Due to exceptionally high user volumes and service-critical spikes, India's digital ecosystem is under particular pressure:
