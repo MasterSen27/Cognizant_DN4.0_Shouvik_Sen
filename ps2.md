@@ -179,53 +179,10 @@ The proposed solution can be carried out within the challenge timeframe since:
 
 ## 4. SYSTEM ARCHITECTURE
 
-### 4.1 High-Level Architecture Diagram
+# 4.1 High-Level Architecture Diagram
+<img width="4195" height="5080" alt="diagram-2026-01-15-154720" src="https://github.com/user-attachments/assets/4eee3c14-9b45-4651-b7a4-162dcf0db1e8" />
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    ARE-IPDIS SYSTEM                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │   Application Behavior Monitoring Engine            │   │
-│  │   • AccessibilityService hooks                       │   │
-│  │   • FileObserver for I/O tracking                    │   │
-│  │   • VpnService for network monitoring                │   │
-│  └──────────────────┬──────────────────────────────────┘   │
-│                     │                                         │
-│                     ▼                                         │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │   Behavior Graph Builder                             │   │
-│  │   • Construct directed behavior graphs               │   │
-│  │   • Extract temporal patterns                        │   │
-│  │   • Feature engineering                              │   │
-│  └──────────────────┬──────────────────────────────────┘   │
-│                     │                                         │
-│                     ▼                                         │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │   Intent Prediction Engine (ML-Based)                │   │
-│  │   • TensorFlow Lite inference                        │   │
-│  │   • Real-time ransomware intent scoring              │   │
-│  │   • Dynamic threshold adjustment                     │   │
-│  └──────────────────┬──────────────────────────────────┘   │
-│                     │                                         │
-│                     ▼                                         │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │   Digital Immunity Layer                             │   │
-│  │   • Selective operation restriction                  │   │
-│  │   • Graduated response mechanisms                    │   │
-│  │   • SELinux policy enforcement                       │   │
-│  └──────────────────┬──────────────────────────────────┘   │
-│                     │                                         │
-│                     ▼                                         │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │   User Alert & Recovery Module                       │   │
-│  │   • Explainable security notifications               │   │
-│  │   • Automated file backup/rollback                   │   │
-│  │   • Recovery guidance                                │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                               │
-└─────────────────────────────────────────────────────────────┘
+
 ```
 
 # 4.2 Data Flow
