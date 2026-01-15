@@ -182,9 +182,6 @@ The proposed solution can be carried out within the challenge timeframe since:
 # 4.1 High-Level Architecture Diagram
 <img width="4195" height="5080" alt="diagram-2026-01-15-154720" src="https://github.com/user-attachments/assets/4eee3c14-9b45-4651-b7a4-162dcf0db1e8" />
 
-
-```
-
 # 4.2 Data Flow
 
 1. Input: Application runtime behavior (file operations, permissions, network activity)
