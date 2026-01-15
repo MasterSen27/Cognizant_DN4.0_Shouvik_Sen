@@ -278,20 +278,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 ### Security Mechanisms
 
 **1. Multi-Layer Defense**
+<img width="1240" height="6525" alt="DNS Tunneling Attack Flow-2026-01-15-094100" src="https://github.com/user-attachments/assets/78cf5498-9507-4a8d-ae06-4db81212d29c" />
 
-```
-Layer 1: Network Layer (IP)
-  ↓ IP spoofing detection (TTL analysis, geolocation checks)
-  ↓ Protocol-based filtering (ICMP floods, IP fragmentation attacks)
-
-Layer 2: Transport Layer (TCP/UDP)
-  ↓ SYN flood mitigation (SYN cookies, connection rate limiting)
-  ↓ UDP amplification detection (source port analysis, payload inspection)
-
-Layer 3: Application Layer (HTTP/DNS)
-  ↓ HTTP flood detection (request rate, URL patterns, user-agent analysis)
-  ↓ DNS amplification mitigation (query rate limiting, response size checks)
-```
 
 **2. Threat Intelligence Integration**
 
