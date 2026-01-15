@@ -6,18 +6,22 @@
 ## 1. Understanding of the Real-World Cyber Security Problem
 
 The Evolution of DDoS Attacks
+
 Even the largest-scale digital infrastructures can be taken down in a matter of minutes by Distributed Denial of Service (DDoS) attacks, which have evolved from the conventional traffic floods that were so prevalent only a short time ago.
 Many strategies are used in modern DDoS attacks, including volumetric floods (overwhelming network bandwidth),
 Application-layer abuse (attacks against particular services) and protocol exploitation (depleting server and network resources).
 Unfortunately, because malicious network traffic is now made to mimic real user behavior, current attacks make it even more difficult to detect them.
 Current Attack Landscape Statistics
 
+
 The scale and frequency of the worldwide DDoS environment have increased dramatically:
 
 ● Attack Volume: DDoS attacks have now exceeded 1 Tbps, with a record-breaking attack recorded at 3.47 Tbps (Microsoft, 2021).
 
 ● Attack Frequency: DDoS attacks rose by 150% globally in 2023, with over 25 million attacks occurring in India alone each year.
+
 ● Attack Sophistication: Approximately 60% of attacks now employ multiple vectors simultaneously, rendering single-layer or conventional defense mechanisms useless.
+
 ● Economic Impact: Businesses are estimated to lose between Rs 10.8 million and Rs 180 million every hour due to DDoS outages.
 
 The Flash-Crowd vs Attack Dilemma
@@ -26,12 +30,19 @@ The difficulty of distinguishing between genuine traffic surges and actual attac
 Events such as these can naturally cause a "flash-crowd" spike.
 
 ●	Flash sales on e-commerce (Big Billion Day, Amazon Great Indian Festival)
+
 ●	Events on the government portal (NEET/JEE results, scheme registrations, vaccine registration
+
 ●	During holidays like Diwali and New Year's, UPI transactions are at their highest.
+
 ●	Telecom crises or significant national occurrences (elections, natural disasters).
+
 Conventional DDoS systems mainly rely on signature detection and fixed thresholds, but these methods are totally ineffective in these situations since they are unable to discern between malicious floods and real crowds.
+
 This has serious repercussions:
+
 High False Positives: During periods of high usage, legitimate users are blocked (30–40% false positive rate in threshold systems). 
+
 Service Degradation: Genuine users' experiences are diminished by excessive rate limiting
 
 Revenue Loss: When mitigation triggers incorrectly, e-commerce platforms lose millions of dollars. 
@@ -39,19 +50,29 @@ Revenue Loss: When mitigation triggers incorrectly, e-commerce platforms lose mi
 Reputational Damage: If portals are unresponsive at crucial times, citizens lose faith in government services.
 
 Limitations of Current Mitigation Approaches
+
 1. Centralized Scrubbing Centers
+
 These are prevalent in corporate settings but have significant disadvantages:
+
 ●	Latency: Redirection delays of two to five seconds before mitigation begins. 
+
 ●	Cost: The monthly cost for constant protection is between Rs. 4,50,000 and Rs. 45,00,000.
+
 ●	Scalability: Restricted capacity when several attacks occur at once
+
 ●	Geography: Geographically, routing to far-off scrubbing centers increases latency by 100–300 ms.
 
 2. Cloud-Based Web Application Firewalls (WAFs)
 
 Cloud WAFs still have limitations and only assist at one layer:
+
 ●	Application Layer Only: Unable to prevent attacks on networks or transport
+
 ●	Subscription Costs: The annual subscription costs range from Rs. 9,00,000 to Rs. 90,00,000.
+
 ●	Limited Control: Organization-specific behavior cannot be accommodated by fixed rules.
+
 ●	External Dependency: The system depends on the uptime of third-party infrastructure.
 
 3. Hardware Appliances
@@ -59,24 +80,39 @@ Cloud WAFs still have limitations and only assist at one layer:
 Hardware-based mitigation is costly and frequently antiquated:
 
 ●	Capital Expense: Each appliance has a capital expense of between Rs. 45,00,000 and Rs. 4,50,00,000.
+
 ●	Static Rules: When it comes to new or zero-day attack patterns, signature detection fails.
+
 ●	Manual Configuration: Needs professional adjustment for policies and thresholds
+
 ●	Capacity Limits: The fixed throughput (1–10 Gbps) collapses in the face of contemporary large-scale attacks.
+
 4. Threshold-Based Detection
 
 Among the most popular and ineffective mitigation strategies:
+
 •	Rigid: Doesn't adjust to typical traffic variations (seasonal peaks, time of day).
+
 •	False Positives: During flash sales and viral spikes, actual users are blocked.
+
 •	Reactive: Only activates once the network has been compromised by attack traffic.
+
 •	Single Metric: Using sophisticated attack patterns, it is easy to get around basic metrics like bandwidth/pps.
 
 India-Specific Challenges
+
 Scale and Urgency of Digital Services
+
 Due to exceptionally high user volumes and service-critical spikes, India's digital ecosystem is under particular pressure:
+
 ● UPI: over 12 billion transactions per month (peak: over 100,000 TPS during festivals)
+
 ● Government portals : When exam results are announced, more than 100 million people use government portals at once.
+
 ● E-Government: Over 500 million citizens are served by DigiLocker, Aadhaar, and UMANG
+
 ● Telecom networks: With 1.2 billion mobile users, usage patterns are erratic.
+
 ● E-commerce: In just a few minutes, flash sales can increase traffic by 10–50 times.
 
 Cost Constraints
@@ -88,7 +124,9 @@ Commercial always-on protection is just too expensive for many organizations:
 ●	Budgetary constraints prevent government agencies from purchasing pricey appliances.
 
 ●	Startups need affordable, scalable security.
+
 Latency Sensitivity
+
 A number of digital systems in India rely on extremely quick responses:
 
 ● Response times for UPI, NEFT, and trading must be less than 100 ms.
@@ -121,65 +159,106 @@ Current solutions are unable to close this gap, making private platforms and nat
 Core Innovation: Kernel-Level Intelligent Mitigation
 
 This solution suggests a DDoS mitigation system that operates directly within the Linux kernel networking stack and is powered by machine learning.
+
 The system stops malicious traffic as soon as possible rather than responding to attacks after packets enter user space or reach the application layer, which causes a delay. This allows for extremely quick and precise mitigation and eliminates the latency and scaling bottlenecks of conventional DDoS solutions.
+
 Technical Foundation: eBPF and XDP
 
 The foundation of the solution is:
 
 
 ●	XDP (eXpress Data Path): A fast Linux kernel packet processing framework called XDP (eXpress Data Path) operates at the NIC driver layer, prior to packets reaching the standard kernel networking stack.
+
 ●	eBPF (extended Berkeley Packet Filter):  Extended Berkeley Packet Filter, or eBPF, is a programmable and secure method of executing custom logic within the kernel without changing the kernel source code.
 
 This combination makes it possible for: 
 
 ●	On commodity machines, line-rate packet processing can process over 10 million packets per second.
+
 ●	Programmable data plane: Personalized logic devoid of kernel patches
+
 ●	Zero-copy processing: Direct packet access without memory duplication is known as zero-copy processing.
+
 ●	JIT compilation: for optimal speed, eBPF programs are compiled into native machine instructions.
 
 
 Three-Layer Architecture
+
 Layer 1: Real-Time Feature Extraction (eBPF/XDP)
+
 eBPF programs intercept packets at the XDP hook and extract features in real time:
+
 Features of the network layer:
+
 ●	Initial and destination IP addresses and ports
+
 ●	Types of protocols (such as TCP, UDP, ICMP, etc.)
+
 ●	Inter-arrival times and packet sizes
+
 ●	IP fragmentation flags and TTL values
 
 Features of the Transport Layer:
+
 ●	Sequence numbers and TCP flags (SYN, ACK, FIN, and RST)
+
 ●	Status of the connection (new, established, or closing)
+
 ●	TCP options and window size
+
 Features of statistics (calculated within the kernel):
+
 ●	Packets per second for each IP source
+
 ●	Each source IP's bytes per second
+
 ●	The rate of new connections per second
+
+
 ●	Distribution of packet sizes (mean/variance)
+
 ●	Ratios of protocols (TCP:UDP:ICMP)
+
 ●	Source IP entropy, a measure of randomness
 
 Ring buffers and kernel-level hash maps are used for all of this computation, avoiding costly user-space context switches.
+
 Layer 2: Intelligent Traffic Classification (ML Engine)
+
 Features are passed to a lightweight ML engine that identifies malicious traffic:
+
 Hybrid Classification Approach:
+
 A. Detection of Statistical Baselines
+
 ●	Utilizing time-series patterns, it creates normal baselines.
+
 ●	uses the standard deviation and z-score to find anomalies.
+
 ●	Adapting automatically to daily, weekly, and hourly trends
+
 ●	Fast detection of known volumetric floods is made possible (95%+ accuracy, <10ms latency).
 
 B. Classifier for Machine Learning
+
 ●	Gradient Boosted Decision Trees (LightGBM) is the algorithm.
+
 ●	Training: Using labeled attack/benign datasets for supervised learning
+
 ●	Entropy, packet rate, and session patterns are among the more than fifty features.
+
 ●	With a kernel-compatible format, inference speed is less than 5 ms per decision.
+
 ●	Accuracy: <2% false positives, 97%+ true positives
 
 C. Analysis of Behavior
+
 ●	It Monitors IP reputation using historical data
+
 ●	Identifies patterns such as HTTP floods, SYN floods, UDP amplification, and Slowloris
+
 ●	Detects distributed attacks akin to botnets
+
 ●	Identifies flash crowd behavior, including normal sessions, geographic spread, and gradual ramps.
 
 
@@ -198,69 +277,111 @@ The ML model learns these distinguishing patterns from training data, enabling a
 Layer 3: Automated Kernel-Level Mitigation (eBPF Actions)
 
 Mitigation takes place right within the kernel after classification:
+
 1.	Packet Dropping with Selection
 
 ●	Gray-listing, or probabilistic dropping for dubious sources
+
 ●	Legitimate traffic is unaffected.
+
 ●	Drops verified malicious IP addresses (blacklist)
 
 2. Rate Limiting Adaptation
+
 ●	Risk score-based dynamic rate limits per IP
+
 ●	 Limiting connections (e.g., 100 new connections/sec per IP)
+
 ●	When necessary, throttling without complete blocking
 
 3. Mechanisms of Challenge-Response :
+
 ●	TCP SYN flood defense using SYN cookies
+
 ●	Verification of UDP through state tracking
+
 ●	Using optional user-space integration to address HTTP challenges
 
 4. Prioritization and Traffic Shaping
+
 ●	Whitelisted IPs and services are given priority.
+
 ●	QoS reduction for questionable traffic
+
 ●	Equitable queuing to avoid monopolies
+
 5. Dynamic Firewall Rule Injection 
+
 ●	Update iptables and nftables rules automatically
+
 ●	Blacklists that are temporary and automatically expire
+
 ●	Geographical blocking for campaigns based on regions
+
 6. Response Time for Mitigation: 
+
 ●	Feature extraction: <1 ms per packet
+
 ●	ML classification: 3–5 ms per choice
+
 ●	Mitigation action: less than one millisecond
+
 ●	Total latency from start to finish: less than 10 ms
 
 Key Technical Advantages
+
 1. Extremely Low Latency
+
 ●	Before the network stack, packets are stopped at XDP.
+
 ●	There is no user-space context switching (conventional: 100–500 ms).
+
 ●	In-kernel machine learning eliminates copying overhead.
+
 2. Elevated Throughput
 
+
 ●	A single commodity server (10-core CPU) can achieve 10–40 Gbps.
+
 ●	Support for multi-interface scaling
+
 ●	XDP zero-copy and multi-queue acceleration
+
 3. Economical
+
 ●	Operates on common server
+
 ●	No proprietary hardware or licensing
+
 ●	Even during attacks, there is a 5–15% CPU overhead.
 
 4. The ability to adapt
+
 ●	Every week or month, models retrain.
+
 ●	Baselines are automatically adjusted.
+
 ●	Acquires knowledge of traffic patterns unique to an organization.
 
 5. No reliance on outside sources
 
 ●	No reliance on cloud or scrubbing centers
+
 ●	Operates on-site with complete data sovereignty
+
 ●	Even when there are disruptions in the upstream internet, it continues to function.
 
 
-
 Technical Feasibility
+
 Because eBPF/XDP is mature and production-grade (used by Cloudflare, Facebook, and Google), this is feasible within the challenge timeline.
+
 ●	It is possible to effectively convert or integrate LightGBM models.
+
 ●	Instead of creating new algorithms, the scope concentrates on integration and optimization.
+
 ●	There are supporting tools such as scikit-learn/LightGBM, Cilium, and libbpf.
+
 ●	Implementations of XDP firewalls are available for reference.
 
 
