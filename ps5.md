@@ -6,21 +6,36 @@
 ## 1. Understanding of the Real-World Cyber Security Problem
 
 The Quantum Threat Landscape
+
 Quantum computing is rapidly developing, and it is a serious, long-term threat to the cryptography we use today. When sufficiently powerful quantum computers are built, Shor’s algorithm will enable them to break not only RSA but also the more general public-key cryptosystems Diffie-Hellman and Elliptic Curve Cryptography in polynomial time. That means that the very cornerstone of modern digital security could come crashing down, exposing billions of encrypted communications and sensitive digital operations.
+
 Harvest Now, Decrypt Later (HNDL) Attacks
+
 One of the most dangerous immediate risks is the “harvest now, decrypt later” strategy. Here, attackers capture encrypted communications today; even if they can’t decrypt them, they can store them until quantum computers become powerful enough to crack them. Current predictions estimate this capability could arrive within 10–15 years.
+
 This becomes particularly alarming because sensitive data may remain valuable for years, such as financial transactions, healthcare records, government communications, and personal messages. Even though such communications may look protected today, they could be exposed in the future.
 
 The Mobile & IoT Challenge
+
 For example, post-quantum cryptographic algorithms such as CRYSTALS-Kyber for key encapsulation and CRYSTALS-Dilithium for digital signatures are immune against quantum attacks but also include several main challenges with respect to real-world implementation, mainly on mobile and IoT devices.
+
 Computational Overhead: PQC operations require 3-10x more CPU cycles than classical cryptography.
+
 Memory constraints: Public keys are 800 bytes to 1.5 KB, Private keys reach up to 2.4 KB hard for IoT devices to handle with only 32–128 KB RAM.
+
 Bandwidth Usage: Larger keys raise transmission costs, especially for IoT devices over cellular networks.
+
 Energy Drain: If continuous PQC usage increased the battery drain in mobile devices by 15-30%.
+
 Latency Impact: Real-time messaging can have an additional 50-200 ms delay per operation.
+
+
 The Adoption Dilemma
+
 This is partly due to the fact that messaging apps offer their services with quite fast message delivery-usually within sub-100 ms; a fully postquantum messaging design would degrade this user experience.
+
 That creates a real and serious gap: we have algorithms which can provide quantum safety, but most environments cannot practically deploy them because of resource limitations.
+
 The challenge is very applicable to India because India is highly mobile-first and digitally expanding. With more than 750 million smartphone users, India needs quantum-secure solutions that remain practical and usable.
 
 
@@ -28,51 +43,113 @@ The challenge is very applicable to India because India is highly mobile-first a
 
 ## 2. Proposed Solution and Technical Approach
 
-### Hybrid Post-Quantum Security Model
+Hybrid post-quantum security model
 
-Our solution implements a **hybrid cryptographic framework** that combines classical and post-quantum algorithms strategically to achieve quantum resistance while maintaining practical performance. The core principle is: **quantum-resistant where necessary, lightweight where possible**.
+The proposed solution to solve this is a hybrid cryptographic framework, combining classical algorithms and post-quantum cryptography optimally. The idea behind it goes as follows:
 
-### Three-Tier Security Architecture
+Use quantum-resistant methods where they matter most and keep the protocol lightweight wherever possible.
 
-**Tier 1: Hybrid Key Exchange (Session Establishment)**
-- Combines X25519 (classical ECDH) with CRYSTALS-Kyber-512 (PQC KEM)
-- Generates a hybrid shared secret: `K_hybrid = KDF(K_classical || K_pqc)`
-- Provides quantum-resistant forward secrecy for session keys
-- Executed only once per session, minimizing PQC overhead
+Three-Tier Security Architecture
 
-**Tier 2: Lightweight Session Encryption (Message Exchange)**
-- Uses ChaCha20-Poly1305 authenticated encryption with 256-bit keys
-- Symmetric encryption provides high performance (1-2 Gbps throughput on mobile processors)
-- Maintains post-quantum security through quantum-resistant session key
-- Enables real-time messaging with <50ms encryption/decryption latency
 
-**Tier 3: Adaptive Authentication (Context-Dependent)**
-- **High-Security Mode**: CRYSTALS-Dilithium-2 signatures for critical messages
-- **Standard Mode**: HMAC-SHA3 for message authentication (lightweight)
-- **IoT Mode**: Pre-shared symmetric keys for constrained devices
-- Application determines authentication level based on message sensitivity and device capability
+Tier 1: Hybrid Key Exchange (Session Establishment)
 
-### Protocol Flow
+●	Uses X25519 (classical ECDH) along with CRYSTALS-Kyber-512 (post-quantum KEM)
 
-1. **Initialization Phase**: Devices perform hybrid key exchange (classical + PQC)
-2. **Session Key Derivation**: HKDF-SHA256 combines both key exchange outputs
-3. **Secure Channel**: All subsequent messages encrypted with ChaCha20-Poly1305
-4. **Key Rotation**: Periodic re-keying using lightweight ratcheting mechanism
-5. **Forward Secrecy**: Session keys deleted after use; compromise doesn't affect past/future sessions
+●	Produces a hybrid shared secret:
 
-### Device-Aware Optimization
+K_hybrid = KDF(K_classical || K_pqc)
 
-- **Mobile Devices**: Full hybrid protocol with optional Dilithium signatures
-- **IoT Gateways**: Hybrid key exchange, symmetric encryption for end devices
-- **Ultra-Constrained IoT**: Pre-shared PQC session keys, symmetric-only operations
-- **Adaptive Fallback**: System degrades gracefully based on device capabilities
+●	Ensures quantum-resistant forward secrecy for the session keys
 
-### Technical Advantages
+●	Runs only once per session, so PQC overhead remains limited
 
-- **Selective PQC Usage**: Post-quantum overhead only during session setup (once per hour/day)
-- **Standardized Components**: Leverages NIST-approved algorithms (Kyber, Dilithium, ChaCha20)
-- **Backward Compatibility**: Classical component ensures interoperability during transition
-- **Fail-Safe Design**: If PQC component fails, classical security still applies (graceful degradation)
+
+Tier 2: Lightweight Session Encryption (Message Exchange)
+
+●	Encrypts messages using ChaCha20-Poly1305 authenticated encryption with 256-bit keys
+
+●	Very high performance: 1–2 Gbps throughput on mobile processors
+
+●	Retains post-quantum protection because the session key itself is quantum-secure
+
+●	Enables real-time messaging with <50ms encryption/decryption latency
+
+
+Tier 3: Adaptive Authentication (Context-Dependent)
+
+Authentication mode adapts to message sensitivity and device capability:
+
+●	High-Security Mode: CRYSTALS-Dilithium-2 signatures for critical messages
+
+●	Standard Mode: HMAC-SHA3 for lightweight message authentication
+
+●	IoT Mode: Pre-shared symmetric keys for constrained devices
+
+●	System automatically determines authentication strength based on context
+
+
+Protocol Flow
+
+1.	Initialization Phase: Hybrid key exchange (classical + PQC)
+
+2.	Session Key Derivation: HKDF-SHA256 merges key exchange outputs
+
+3.	Secure Channel Setup: ChaCha20-Poly1305 encrypts all messages
+
+4.	Key Rotation: Periodic lightweight ratcheting mechanism
+
+5.	Forward Secrecy: Session keys deleted after use to isolate damage
+
+
+Device-Aware Optimization
+
+The protocol is tuned depending on device class:
+
+●	Mobile Devices: full hybrid protocol with optional Dilithium signatures
+
+●	IoT Gateways: hybrid key exchange with symmetric encryption downstream
+
+●	Ultra-Constrained IoT: pre-shared PQC session keys + symmetric-only runtime
+
+●	Adaptive Fallback: security gracefully degrades based on device limitations
+
+Technical Advantages
+
+●	Selective PQC usage: PQC overhead only in session setup (hourly/daily)
+
+●	Uses standardized algorithms: Kyber, Dilithium, ChaCha20
+
+●	Backward-compatible: classical component supports transition phase
+
+●	Fail-safe design: classical security still applies if PQC fails
+
+
+Security Mechanisms
+
+Forward Secrecy Implementation
+
+●	Sessions use unique ephemeral keys
+
+●	Key ratcheting after N messages (configurable between 100-1000)
+
+●	Keys deleted after session termination
+
+●	No long-term PQC keys stored on device (only certificates remain)
+
+
+Threat Model Coverage
+
+●	 Quantum attacker using Shor’s algorithm
+
+●	 Man-in-the-middle attacks during handshake
+
+●	 Replay and message tampering attacks
+
+●	 Forward secrecy against key compromise
+
+●	 Harvest now, decrypt later resistance
+
 
 ---
 
@@ -179,22 +256,22 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 
 ## 5. Benchmarking Against Existing Solutions
 
-### Comparative Analysis
+Comparative Analysis
 
 | **Aspect** | **Classical Messaging (Signal, WhatsApp)** | **Full PQC Messaging (Academic Prototypes)** | **Proposed Hybrid Approach** |
 |------------|-------------------------------------------|---------------------------------------------|------------------------------|
-| **Quantum Resistance** | ❌ No (vulnerable to quantum attacks) | ✅ Yes (fully quantum-safe) | ✅ Yes (quantum-safe session keys) |
+| **Quantum Resistance** | No (vulnerable to quantum attacks) | Yes (fully quantum-safe) | Yes (quantum-safe session keys) |
 | **Session Setup Latency** | 50-100ms (ECDH) | 2-5 seconds (full PQC handshake) | 300-500ms (hybrid KEM) |
 | **Message Latency** | <10ms (symmetric encryption) | 50-200ms (PQC signatures per message) | <20ms (symmetric encryption) |
 | **Memory Footprint** | 500 KB - 1 MB | 5-10 MB (large PQC libraries) | 1.5-2 MB (optimized hybrid) |
 | **Battery Impact (Daily)** | 1-2% (baseline) | 15-30% (continuous PQC ops) | 3-5% (occasional PQC) |
-| **IoT Device Support** | ✅ Excellent (lightweight) | ❌ Poor (too resource-intensive) | ✅ Good (adaptive modes) |
+| **IoT Device Support** | Excellent (lightweight) | Poor (too resource-intensive) | Good (adaptive modes) |
 | **Bandwidth Overhead** | Low (32-64 bytes/msg) | High (2-4 KB per signature) | Low (32-64 bytes/msg after setup) |
-| **Standardization** | ✅ Industry standard (Signal Protocol) | ⚠️ Research-only, not standardized | ✅ NIST PQC standards compliant |
-| **Deployment Feasibility** | ✅ Deployed at billion-user scale | ❌ Not production-ready | ✅ Practical for large-scale deployment |
-| **Forward Secrecy** | ✅ Yes (but not quantum-safe) | ✅ Yes (quantum-safe) | ✅ Yes (quantum-safe) |
+| **Standardization** | Industry standard (Signal Protocol) | Research-only, not standardized | NIST PQC standards compliant |
+| **Deployment Feasibility** | Deployed at billion-user scale | Not production-ready | Practical for large-scale deployment |
+| **Forward Secrecy** | Yes (but not quantum-safe) | Yes (quantum-safe) | Yes (quantum-safe) |
 
-### Technical Comparison: Key Exchange Performance
+Technical Comparison: Key Exchange Performance
 
 | **Protocol** | **Key Generation** | **Encapsulation** | **Decapsulation** | **Public Key Size** | **Ciphertext Size** |
 |--------------|-------------------|-------------------|------------------|---------------------|---------------------|
@@ -203,25 +280,24 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 | **Dilithium-2 (PQC Sig)** | 0.50ms | 1.2ms (sign) | 0.6ms (verify) | 1312 bytes | 2420 bytes |
 | **Hybrid X25519+Kyber** | 0.20ms | 0.26ms | 0.28ms | 832 bytes | 800 bytes |
 
-*Benchmarks measured on ARM Cortex-A72 @ 1.5 GHz*
 
-### Advantages Over Existing Approaches
+Advantages Over Existing Approaches
 
 **vs Classical Messaging:**
-- ✅ Quantum-resistant security without sacrificing user experience
-- ✅ Future-proof against quantum computer development
-- ✅ Minimal adoption friction (similar performance profile)
+-  Quantum-resistant security without sacrificing user experience
+-  Future-proof against quantum computer development
+-  Minimal adoption friction (similar performance profile)
 
 **vs Full PQC Solutions:**
-- ✅ 4-10x faster message throughput
-- ✅ 3-5x lower memory requirements
-- ✅ 5-6x lower battery consumption
-- ✅ Practical for resource-constrained devices
+-  4-10x faster message throughput
+-  3-5x lower memory requirements
+-  5-6x lower battery consumption
+-  Practical for resource-constrained devices
 
 **vs Hybrid Academic Proposals:**
-- ✅ Device-aware adaptive security (not one-size-fits-all)
-- ✅ Production-ready implementation strategy
-- ✅ Comprehensive IoT ecosystem support
+-  Device-aware adaptive security (not one-size-fits-all)
+-  Production-ready implementation strategy
+-  Comprehensive IoT ecosystem support
 
 ---
 
