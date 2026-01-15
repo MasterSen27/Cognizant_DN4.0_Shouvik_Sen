@@ -192,71 +192,106 @@ Threat Model Coverage
 - No long-term PQC keys stored on device (only certificates)
 
 **Threat Model Coverage**
-- ✅ Quantum adversary with Shor's algorithm capability
-- ✅ Man-in-the-middle attacks during key exchange
-- ✅ Message tampering and replay attacks
-- ✅ Forward secrecy against key compromise
-- ✅ Harvest now, decrypt later scenarios
+- Quantum adversary with Shor's algorithm capability
+- Man-in-the-middle attacks during key exchange
+- Message tampering and replay attacks
+- Forward secrecy against key compromise
+- Harvest now, decrypt later scenarios
 
 ---
 
 ## 4. Expected Outcomes
 
-### Quantifiable Security Guarantees
+Quantifiable Security Guarantees
 
-**Quantum Resistance**
-- 128-bit post-quantum security level (Kyber-512)
-- Resistant to Grover's algorithm with 256-bit symmetric keys
-- Forward secrecy preserved even with quantum adversary
-- Protection against harvest now, decrypt later attacks
 
-**Performance Metrics (Target)**
-- Session establishment latency: <500ms (vs 2-5s for full PQC)
-- Message encryption latency: <20ms per message
-- Throughput: >100,000 messages/second on mobile processors
-- Memory footprint: <2 MB for full implementation
-- Battery impact: <5% additional drain compared to classical messaging
+Quantum Resistance
 
-### Device Compatibility
+●	128-bit post-quantum security (Kyber-512)
 
-**Mobile Devices (Smartphones, Tablets)**
-- Full hybrid protocol with Dilithium signatures
-- Expected battery life impact: 3-5% for typical daily usage
-- Storage requirement: 1.5-2 MB for crypto libraries
-- Minimum specs: 2GB RAM, ARM Cortex-A53 or equivalent
+●	Grover-resistant due to 256-bit symmetric keys
 
-**IoT Gateways (Home Hubs, Industrial Controllers)**
-- Full hybrid protocol, manages constrained end devices
-- Can handle 100+ concurrent PQC sessions
-- RAM requirement: 256 MB minimum
-- Typical use: Smart home controllers, industrial PLCs
+●	Forward secrecy holds even against quantum adversaries
 
-**Constrained IoT Devices (Sensors, Actuators)**
-- Gateway-assisted mode: pre-established PQC session keys
-- Direct device operations: symmetric encryption only
-- RAM requirement: 32 KB minimum
-- Typical use: Temperature sensors, smart meters, wearables
+●	Provides defense against harvest now, decrypt later attacks
 
-### Deployment Readiness
 
-- **Standardization**: Built on NIST-approved PQC algorithms
-- **Interoperability**: Compatible with existing messaging protocols (Signal Protocol, XMPP)
-- **Backward Compatibility**: Graceful degradation to classical security during transition
-- **SDK/API**: Provide developer-friendly APIs for integration
-- **Cross-Platform**: Support for Android, iOS, Linux embedded systems
+Performance Metrics (Target)
 
-### Real-World Impact
+●	Session setup latency: <500 ms (vs 2-5s full PQC)
 
-- Protect 750+ million Indian mobile users against quantum threats
-- Secure IoT infrastructure for Smart Cities mission (100+ cities)
-- Enable quantum-safe healthcare communications (telemedicine, patient records)
-- Support Digital India initiatives with long-term security guarantees
+●	Message encryption latency: <20 ms per message
+
+●	Throughput: >100,000 messages/second on mobile processors
+
+●	Memory footprint: <2 MB
+
+●	Battery drain: <5% extra compared to classical messaging
+
+
+Device Compatibility: Mobile Devices (Smartphones, Tablets)
+
+●	Full hybrid protocol + Dilithium signatures
+
+●	Battery impact: 3-5% daily typical usage
+
+●	Storage: 1.5-2 MB crypto libraries
+
+●	Minimum specs: 2GB RAM, ARM Cortex-A53 or equivalent
+
+
+IoT Gateways (Home Hubs, Industrial Controllers)
+
+●	Full hybrid protocol managing constrained devices
+
+●	Supports 100+ concurrent PQC sessions
+
+●	RAM: 256 MB minimum
+
+●	Use cases: smart home hubs, industrial PLCs
+
+
+Constrained IoT Devices (Sensors, Actuators)
+
+●	Gateway-assisted mode with pre-established PQC session keys
+
+●	Device performs only symmetric encryption during runtime
+
+●	RAM: 32 KB minimum
+
+●	Use cases: sensors, smart meters, wearables
+
+
+Deployment Readiness
+
+●	Built on NIST-approved PQC algorithms
+
+●	Compatible with Signal Protocol and XMPP
+
+●	Backward-compatible classical transition support
+
+●	SDK/API available for integration
+
+●	Cross-platform support: Android, iOS, Linux embedded
+
+
+Real-World Impact
+
+●	Protect 750+ million Indian mobile users
+
+●	Secure Smart Cities mission infrastructure (100+ cities)
+
+●	Enable quantum-safe healthcare communication
+
+●	Strengthen Digital India initiatives with long-term security
+
 
 ---
 
 ## 5. Benchmarking Against Existing Solutions
 
 Comparative Analysis
+
 
 | **Aspect** | **Classical Messaging (Signal, WhatsApp)** | **Full PQC Messaging (Academic Prototypes)** | **Proposed Hybrid Approach** |
 |------------|-------------------------------------------|---------------------------------------------|------------------------------|
@@ -271,7 +306,9 @@ Comparative Analysis
 | **Deployment Feasibility** | Deployed at billion-user scale | Not production-ready | Practical for large-scale deployment |
 | **Forward Secrecy** | Yes (but not quantum-safe) | Yes (quantum-safe) | Yes (quantum-safe) |
 
+
 Technical Comparison: Key Exchange Performance
+
 
 | **Protocol** | **Key Generation** | **Encapsulation** | **Decapsulation** | **Public Key Size** | **Ciphertext Size** |
 |--------------|-------------------|-------------------|------------------|---------------------|---------------------|
