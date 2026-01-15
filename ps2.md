@@ -1,19 +1,6 @@
-# Cyber Security Innovation Challenge 1.0
-## Stage 1: Ideation & Proposal Submission
+# ARE-IPDIS: Android Ransomware Early-Intent Prediction & Digital Immunity System
+## Problem Statement 2: Ransomware Early Warning System for Android Devices
 
----
-
-**Problem Statement 2:** Ransomware Early Warning System for Android Devices  
-**Domain:** Mobile Device Security  
-**Team Name:** Warrior  
-**Institute:** Institute of Engineering & Management, Kolkata
-
----
-
-## Project Title
-**ARE-IPDIS: Android Ransomware Early-Intent Prediction & Digital Immunity System**
-
----
 
 ## 1. EXECUTIVE SUMMARY
 
@@ -939,9 +926,7 @@ We are ready to transform this innovative idea into a working Minimum Viable Pro
 
 ---
 
-## APPENDICES
-
-### Appendix A: Technical Terms Glossary
+## Technical Terms Glossary
 
 - **Intent Prediction**: Estimating malicious intent before actions are executed
 - **Behavior Graph**: Directed graph representing temporal sequences of application actions
@@ -952,33 +937,25 @@ We are ready to transform this innovative idea into a working Minimum Viable Pro
 - **SELinux**: Security-Enhanced Linux, providing mandatory access control
 - **TensorFlow Lite**: Lightweight ML framework for on-device inference
 
-### Appendix B: Team Composition
+## Declarations
 
-**Team Name**: Warrior  
-**Institute**: Institute of Engineering & Management, Kolkata
+**Originality:**
+This proposal and the proposed solution are entirely original work created by our team. We have not copied, plagiarized, or used AI-generated content. All ideas, technical approaches, and documentation are the result of our own research, analysis, and innovation.
 
-**Proposed Team Roles**:
-- **Team Lead**: Project coordination, communication, architecture design
-- **ML Engineer**: Behavior graph modeling, intent prediction engine
-- **Android Developer 1**: Monitoring modules, Digital Immunity Layer
-- **Android Developer 2**: UI/UX, user alert system, integration
-- **Security Analyst**: Testing, validation, threat analysis
+**Intellectual Property:**
+We confirm that our work does not infringe on any third-party intellectual property rights. The proposed solution is based on open-source technologies (Linux kernel, eBPF, open-source ML frameworks) and our own innovative system design and implementation.
 
-### Appendix C: References
-
-1. Android Security Documentation: https://source.android.com/security
-2. TensorFlow Lite: https://www.tensorflow.org/lite
-3. ISEA Project: https://isea.gov.in/
-4. DSCI: https://www.dsci.in/
-5. Academic papers on mobile malware detection (to be compiled during Phase 1)
+**No Conflicts:**
+We have no conflicts of interest and are eligible to participate in the Cyber Security Innovation Challenge 1.0 according to all stated eligibility criteria.
 
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: January 2026  
-**Team Contact**: [To be provided]  
-**Institute**: Institute of Engineering & Management, Kolkata
+**Contact Information:**
+- **Team Lead**: [Name]
+- **Email**: [Email Address]
+- **Institution**: [Institution Name]
+- **Team Members**: [List team members]
 
----
+**We look forward to transforming this innovative idea into a reality that strengthens India's digital infrastructure against DDoS threats.**
 
 *This proposal is submitted in response to the Cyber Security Innovation Challenge 1.0, Problem Statement 2: Ransomware Early Warning System for Android Devices.*
