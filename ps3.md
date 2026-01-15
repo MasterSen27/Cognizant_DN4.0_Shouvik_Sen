@@ -268,40 +268,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 
 
 **3. eBPF Map Structures (Shared Kernel-User Space Data)**
+<img width="7843" height="5185" alt="DNS Tunneling Attack Flow-2026-01-15-092242" src="https://github.com/user-attachments/assets/5426160e-bc25-4fb5-8021-ca4857331cbe" />
 
-```
-┌──────────────────────────────────────────────────────────┐
-│                    eBPF Maps                             │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│  [IP_STATS_MAP] - Hash Map                              │
-│  • Key: Source IP address (32-bit/128-bit)              │
-│  • Value: {pkt_count, byte_count, timestamp}            │
-│  • Size: 1 million entries (4-16 MB RAM)                │
-│                                                          │
-│  [CONNECTION_TRACK_MAP] - Hash Map                       │
-│  • Key: 5-tuple (src_ip, dst_ip, src_port, dst_port,    │
-│          protocol)                                       │
-│  • Value: {state, syn_time, packet_count}               │
-│  • Size: 100,000 concurrent connections                 │
-│                                                          │
-│  [BLACKLIST_MAP] - Hash Map                              │
-│  • Key: Source IP address                               │
-│  • Value: {reason, timestamp, expiry_time}              │
-│  • Size: 10,000 entries (dynamic blacklist)             │
-│                                                          │
-│  [RATE_LIMIT_MAP] - Hash Map                             │
-│  • Key: Source IP address                               │
-│  • Value: {max_pps, max_bps, burst_size}                │
-│  • Size: 50,000 entries (per-IP limits)                 │
-│                                                          │
-│  [BASELINE_MAP] - Array Map                              │
-│  • Index: Time bucket (hourly/daily)                    │
-│  • Value: {avg_pps, stddev_pps, avg_entropy}            │
-│  • Size: 168 entries (7 days × 24 hours)                │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-```
 
 ### Data Flow: Packet Processing Pipeline
 
