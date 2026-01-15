@@ -14,7 +14,7 @@ This solution would fill this critical gap in mobile cybersecurity especially th
 
 ## 2. PROBLEM UNDERSTANDING: Real-World Cybersecurity Challenge
 
-# 2.1 The Ransomware Threat Landscape on Android
+### 2.1 The Ransomware Threat Landscape on Android
 
 Ransomware is among the most devastating cyber threat in the world and Android-based devices are targeted more because of:
 
@@ -23,7 +23,7 @@ Sensitive Data Storage: The personal photos, financial applications, business-re
 Low User Awareness: A lot of users do not have knowledge of cybersecurity and download applications of unreliable sources.
 Permission Exploitation: Ransomware exploits the Android permissions ( storage access, accessibility services, admin privileges).
 
-# 2.2 Existing Detection Methods and their weak points.
+### 2.2 Existing Detection Methods and their weak points.
 
 Current security mechanisms in Android have serious weaknesses:
 
@@ -33,7 +33,7 @@ Current security mechanisms in Android have serious weaknesses:
 4. High False Positives The app is considered to be legitimate and is incorrectly flagged, resulting in frustration to the user.
 5. Reactive Response: There is a risk of corrupted data and system instability following force-stopping of apps.
 
-# 2.3 Impact on India's Digital Ecosystem
+### 2.3 Impact on India's Digital Ecosystem
 
 In India, where 600+ million users use Smartphones as the main computing gadget. 
 The use of digital payments is gaining rapidity (UPI, mobile wallets) BYOD (Bring Your own device) is a common phenomenon in an enterprise setup.
@@ -46,7 +46,7 @@ Cessation of critical services.
 Data breaches of the enterprise through hacked staff gadgets. 
 Loss of confidence in systems online.
 
-# 2.4 Requirement of Preventative, On-Board Security.
+### 2.4 Requirement of Preventative, On-Board Security.
 
 India needs a privacy-sensitive, proactive on-device, ransomware defense to safeguard the ever-expanding mobile-driven digital economy in the country. Existing solutions fail to fulfill the requirement of early detection with minimum interference with the legitimate operation of the devices.
 
@@ -55,7 +55,7 @@ India needs a privacy-sensitive, proactive on-device, ransomware defense to safe
 
 ## 3. PROPOSED SOLUTION AND TECHNICAL APPROACH
 
-# 3.1 Core Innovation: Intent-First Detection
+### 3.1 Core Innovation: Intent-First Detection
 
 ARE-IPDIS does change the paradigm that is not reactive to post-infection but prevents being encrypted before by:
 - Prediction Of intent, not Signature Matching.
@@ -73,7 +73,7 @@ The system continuously observes:
 - The exploitation of accessibility services.
 
 
-# 3.2 Elements of technical architecture.
+### 3.2 Elements of technical architecture.
 
 Component 1: Monitoring Engine of Behaviors of applications.
 Purpose: Capture fine-grained runtime behavior of installed applications
@@ -154,7 +154,7 @@ Recovery Features:
 - Directed process of app uninstall. 
 - Security analysis incident reporting.
 
-# 3.3 Workflow: From Detection to Prevention.
+### 3.3 Workflow: From Detection to Prevention.
 
 1. Monitoring: all the activities of the app are monitored by behavior monitoring engine.
 2. Signal Collection: Raw behavioral data captured and timestamped
@@ -165,7 +165,7 @@ Recovery Features:
 7. User Notification: Alert module informs user with actionable recommendations
 8. Ongoing Monitoring: System continues observation and adjusts response as needed
 
-# 3.4 Technical Feasibility Over Challenge Timeline.
+### 3.4 Technical Feasibility Over Challenge Timeline.
 
 The proposed solution can be carried out within the challenge timeframe since: 
 - Builds on Existing Android APIs: No OS modifications.
@@ -179,10 +179,10 @@ The proposed solution can be carried out within the challenge timeframe since:
 
 ## 4. SYSTEM ARCHITECTURE
 
-# 4.1 High-Level Architecture Diagram
+### 4.1 High-Level Architecture Diagram
 <img width="4195" height="5080" alt="diagram-2026-01-15-154720" src="https://github.com/user-attachments/assets/4eee3c14-9b45-4651-b7a4-162dcf0db1e8" />
 
-# 4.2 Data Flow
+### 4.2 Data Flow
 
 1. Input: Application runtime behavior (file operations, permissions, network activity)
 2. Processing: Behavior graphs constructed and analyzed
@@ -191,7 +191,7 @@ The proposed solution can be carried out within the challenge timeframe since:
 5. Action: Digital Immunity Layer enforces restrictions
 6. Output: User alerts and system logs
 
-# 4.3 Key Design Principles
+### 4.3 Key Design Principles
 
 - Privacy-First: All processing occurs on-device; no data sent to external servers
 - Performance-Optimized: Lightweight ML models ensure minimal battery drain (<2%)
@@ -205,7 +205,7 @@ The proposed solution can be carried out within the challenge timeframe since:
 
 ARE-IPDIS solution is developed to provide improvements in mobile ransomware defense measurably:
 
-# 5.1 Primary Outcomes 
+### 5.1 Primary Outcomes 
 Early Threat Detection 
 - Ransomware purpose detected prior to encrypted data. 
 - Detection window: 5-30 seconds of initial file encryption. 
@@ -230,14 +230,14 @@ Improved User Trust
 - Recommendations of actions make users strong. 
 - Non-disruptive defense does not ruin device usability. 
 
-# 5.2 Secondary Benefits
+### 5.2 Secondary Benefits
  Forensic Capabilities: Behavior logs provide detailed behavior logs, which help in the analysis after the incident.
  Adaptive Learning: System is enhanced as the new threat patterns emerge. 
 Battery Efficiency: Less than 2% increment of battery usage. 
 Cross-Device Protection: Framework that is tablet- and IoT-compatible.
 
 
-# 5.3 Success Metrics
+### 5.3 Success Metrics
 
 | Metric | Target | Measurement Method |
 |--------|--------|-------------------|
@@ -251,7 +251,7 @@ Cross-Device Protection: Framework that is tablet- and IoT-compatible.
 
 ## 6. BENCHMARKING AGAINST EXISTING SOLUTIONS
 
-# 6.1 Comparative Analysis
+### 6.1 Comparative Analysis
 
 | Feature | Traditional Antivirus | Behavior-Based Detection | ARE-IPDIS (Proposed) |
 |---------|----------------------|-------------------------|----------------------|
@@ -265,7 +265,7 @@ Cross-Device Protection: Framework that is tablet- and IoT-compatible.
 | **Explainability** | Limited | None | High (clear explanations) |
 | **Offline Functionality** | Limited | Moderate | Full |
 
-# 6.2 Key Differentiators
+### 6.2 Key Differentiators
 
 1. Intent Prediction vs. Post-Execution Detection
 - Existing solutions react after damage begins
@@ -287,7 +287,7 @@ Cross-Device Protection: Framework that is tablet- and IoT-compatible.
 - ARE-IPDIS: Fully functional offline
 - Result: Better privacy and reliability in low-connectivity areas
 
-# 6.3 Performance Comparison (Projected)
+### 6.3 Performance Comparison (Projected)
 
 | Solution | Detection Rate | False Positives | Response Time | Offline Capable |
 |----------|---------------|-----------------|---------------|-----------------|
@@ -300,7 +300,7 @@ Cross-Device Protection: Framework that is tablet- and IoT-compatible.
 
 ## 7. KEY INNOVATION AND UNIQUE VALUE PROPOSITION
 
-# 7.1 Core Innovation: Intent-First Ransomware Prevention
+### 7.1 Core Innovation: Intent-First Ransomware Prevention
 
 Paradigm Shift: Reaction to Prediction.
 
@@ -312,7 +312,7 @@ Technical Innovation:
 - Early Intervention: Is during the preparation phase rather than the behavior phase. 
 
 
-# 7.2 Unique Value Propositions 
+### 7.2 Unique Value Propositions 
 
 Prevention Before Damage:
 - Unlike all the available solutions, ARE-IPDIS forecasts the intent of malice before the first file is encrypted.
@@ -343,7 +343,7 @@ Zero-Day Protection:
 - Good protection against polymorphic malware and metamorphic malware. 
 - Future-proof approach reacts to the changing threats.
 
-# 7.3 Competitive Advantage
+### 7.3 Competitive Advantage
 
 ARE-IPDIS combines multiple innovations into a cohesive solution:
 
@@ -361,7 +361,7 @@ No existing solution integrates all these elements, making ARE-IPDIS a truly dif
 
 ## 8. PRODUCT ROADMAP
 
-# 8.1 Development Phases
+### 8.1 Development Phases
 
 Phase 1: Foundation & Research (Weeks 1-4)
 Objectives:
@@ -450,7 +450,7 @@ Technical Milestones:
 
 ---
 
-# 8.2 Key Milestones Summary
+### 8.2 Key Milestones Summary
 
 | Phase | Duration | Key Deliverable | Success Criteria |
 |-------|----------|-----------------|------------------|
@@ -460,7 +460,7 @@ Technical Milestones:
 | Phase 4 | Weeks 14-16 | Complete Android app | Functional UI and alerts |
 | Phase 5 | Weeks 17-20 | Tested MVP | >95% detection, <2% FPR |
 
-# 8.3 Resource Requirements
+### 8.3 Resource Requirements
 
 Hardware:
 - Development Android devices (3-5 devices, various Android versions)
@@ -479,7 +479,7 @@ Team Allocation:
 - Android development & integration: 2 members
 - Security testing & validation: 1 member
 
-# 8.4 Risk Mitigation
+### 8.4 Risk Mitigation
 
 | Risk | Mitigation Strategy |
 |------|-------------------|
@@ -493,7 +493,7 @@ Team Allocation:
 
 ## 9. END-USE CASES AND TARGET USERS
 
-# 9.1 Primary Target Users
+### 9.1 Primary Target Users
 
 1. Personal Android Users (Consumer Segment)
 
@@ -554,7 +554,7 @@ Specific Scenarios:
 
 ---
 
-# 9.2 Industry Sectors
+### 9.2 Industry Sectors
 
 | Sector | Use Case | Impact |
 |--------|----------|--------|
@@ -567,7 +567,7 @@ Specific Scenarios:
 
 ---
 
-# 9.3 Geographic Focus
+### 9.3 Geographic Focus
 
 Primary: India
 - 600+ million smartphone users
@@ -585,7 +585,7 @@ Secondary: Emerging Markets
 
 ## 10. IMPACT, SCALABILITY, AND SUSTAINABILITY
 
-# 10.1 Impact Assessment
+### 10.1 Impact Assessment
 
 Individual Impact
 - Personal Data Protection: Prevents photos, documents, and memories from being lost.
@@ -605,7 +605,7 @@ Societal Impact
 - National Security: Protects critical mobile communications infrastructure and associated public services.
 - Cyber Security Ecosystem: This will further reinforce India's position as a leader in the area of
 
-# 10.2 Scalability
+### 10.2 Scalability
 
 Technical Scalability:
 
@@ -638,7 +638,7 @@ Feature Expansion:
 - Applies to other malware types (spyware, trojan, adware) 
 - Platforms: tablets, wearables, IoT devices
 
-# 10.3 Sustainibility
+### 10.3 Sustainibility
 
 Technical Sustainability
 
@@ -693,7 +693,7 @@ Social Impact:
 - Outreach to underserved communities
 
 
-# 10.4 Alignment with India’s Digital Security Needs
+### 10.4 Alignment with India’s Digital Security Needs
 
 National Priorities: 
 - Digital India Initiative: facilitating safe and secure usage on digital platforms 
@@ -711,7 +711,7 @@ Strategic Importance:
 
 ## 11. IMPLEMENTATION FEASIBILITY
 
-# 11.1 Technical Feasibility
+### 11.1 Technical Feasibility
 
 Available Technology:
 - Android SDK APIs (Accessibility Service, File Observer, VpnService)
@@ -731,7 +731,7 @@ Proof of Concept:
 - Sample Behaviour Graphs can be constructed by hand
 - It is an alternative used prior to applying machine learning methods
 
-# 11.2 Timeline Feasibility
+### 11.2 Timeline Feasibility
 
 20-Week Development Plan:
 - Realistic: Has specific, achievable goals in each phase
@@ -744,7 +744,7 @@ Team Capacity
 - Role definition (ML, android app development, testing)
 - Availability of guidance from mentors of programs supported by the CSIC
 
-# 11.3 Resource Feasibility
+### 11.3 Resource Feasibility
 
 Budget Requirements:
 - Development devices: ₹15,000
@@ -756,7 +756,7 @@ Budget Requirements:
 No Ongoing Infrastructure Costs: 
 Server costs are bypassed with the on-device solution
 
-# 11.4 Regulatory & Privacy Compliance
+### 11.4 Regulatory & Privacy Compliance
 
 Data Protection:
 - No personal data collected or transmitted—completely on-device 
@@ -772,7 +772,7 @@ Android Platform Policies:
 
 ## 12. DIFFERENTIATION FROM EXISTING RESEARCH
 
-# 12.1 Academic Research Environment
+### 12.1 Academic Research Environment
 
 Current Methods:
 - Static Analysis: Conducts tests on APKs before the app gets installed, but it doesn’t identify how the app will behave when it’s operating.
@@ -786,7 +786,7 @@ ARE-IPDIS:
 - Graduated Response: It does not impose a strict on/off approach but uses selective locking.
 - Explainability: Enables users to understand reasons for a system's decision, a rare quality in many research systems.
 
-# 12.2 Novelty
+### 12.2 Novelty
 
 ARE-IPDIS integrates three different innovations which are generally not included in previous research:
 
@@ -812,7 +812,7 @@ This research contributes significantly to mobile malware detection by combining
 
 ## 13. CONCLUSION
 
-# 13.1 Summary of Proposal
+### 13.1 Summary of Proposal
 
 The need for a novel security solution for Android has been filled with a proposal that introduced ARE-IPDIS—Android Ransomware Early-Intent Prediction & Digital Immunity System. This is because it addresses a major loophole that is yet to be adequately
 
@@ -824,7 +824,7 @@ By turning around the detection mentality from responding to infection to predic
 - Privacy preservation: whole processing is done on the device without depending on cloud computing capabilities
 - Universally usable: viable for personal, business, financial, and governmental use
 
-# 13.2 Alignment with Challenge Objectives
+### 13.2 Alignment with Challenge Objectives
 
 ARE-IPDIS addresses the Cyber Security Innovation Challenge 1.0 on the following:
 - Innovation ecosystem development: Encourages innovation with a focus on security products from inception.
@@ -833,7 +833,7 @@ ARE-IPDIS addresses the Cyber Security Innovation Challenge 1.0 on the following
 - Scalable and Deployable: on-device design capable of supporting millions of installations
 - Research-oriented, translates research into application
 
-# 13.3 Real-World Impact
+### 13.3 Real-World Impact
 
 If implemented and developed successfully, ARE-IPDIS might:
 - Protecting the privacy of the estimated 4 million people reliant on the devices each month
@@ -842,7 +842,7 @@ If implemented and developed successfully, ARE-IPDIS might:
 - Support Digital India & Cyber Security Initiatives in India
 - Enrich global knowledge on mobile security
 
-# 13.4 Call to Action 
+### 13.4 Call to Action 
 
 We are prepared to develop this concept and launch a functional Minimum Viable Product for Intent-based and Preventive Mobile Security. With the support of the CSIC 1.0 initiative and the guidance of experts from the industry, ARE-IPDIS will be an addition of value to the cyber security landscape of India. Respectfully, we would like to seek a chance to move on to the next round of the Cyber Security Innovation Challenge to enable this vision to come true.
 
