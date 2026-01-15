@@ -84,40 +84,8 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 ## 3. System Architecture
 
 ### High-Level Architecture Diagram
+<img width="3158" height="4800" alt="DNS Tunneling Attack Flow-2026-01-15-132451" src="https://github.com/user-attachments/assets/0f6db5e4-2d64-46ce-89b4-882a1f0d955c" />
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Hybrid PQC Messaging System                   │
-└─────────────────────────────────────────────────────────────────┘
-
-┌──────────────┐                                    ┌──────────────┐
-│   Device A   │                                    │   Device B   │
-│  (Mobile)    │                                    │   (IoT)      │
-└──────┬───────┘                                    └──────┬───────┘
-       │                                                   │
-       │  ① Hybrid Key Exchange Request                   │
-       │ ─────────────────────────────────────────────────>
-       │    (X25519 + Kyber-512 Public Keys)              │
-       │                                                   │
-       │  ② Hybrid Key Exchange Response                  │
-       │ <─────────────────────────────────────────────────
-       │    (X25519 + Kyber-512 Encapsulation)            │
-       │                                                   │
-       ├───────────────────────────────────────────────────┤
-       │  ③ Derive Hybrid Session Key (K_session)         │
-       │     K_session = HKDF(K_X25519 || K_Kyber)        │
-       ├───────────────────────────────────────────────────┤
-       │                                                   │
-       │  ④ Encrypted Message (ChaCha20-Poly1305)         │
-       │ ─────────────────────────────────────────────────>
-       │                                                   │
-       │  ⑤ Encrypted Response (ChaCha20-Poly1305)        │
-       │ <─────────────────────────────────────────────────
-       │                                                   │
-       │  ⑥ Periodic Key Rotation (Ratchet Mechanism)     │
-       │ <────────────────────────────────────────────────>
-       │                                                   │
-```
 
 ### Component Architecture
 
