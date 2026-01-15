@@ -260,40 +260,8 @@ The proposed solution is **highly feasible within the challenge timeline** becau
 ### Detailed Component Architecture
 
 **1. Data Plane (Kernel Space - eBPF/XDP)**
+<img width="7069" height="5130" alt="DNS Tunneling Attack Flow-2026-01-15-084708" src="https://github.com/user-attachments/assets/d8b7f872-4ce6-4830-89e5-dde576f1dad0" />
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    XDP eBPF Program                         │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │          Packet Reception & Parsing                 │    │
-│  │  • Extract IP header (src, dst, protocol, TTL)     │    │
-│  │  • Extract transport header (TCP/UDP ports, flags) │    │
-│  │  • Calculate packet hash for flow identification   │    │
-│  └────────────────┬───────────────────────────────────┘    │
-│                   ▼                                         │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │         Real-Time Feature Extraction                │    │
-│  │  • Update per-IP packet counter (BPF_MAP_UPDATE)   │    │
-│  │  • Update per-IP byte counter                      │    │
-│  │  • Track connection state (SYN, SYN-ACK, ACK)      │    │
-│  │  • Compute packet inter-arrival time               │    │
-│  │  • Calculate IP entropy (source diversity)         │    │
-│  └────────────────┬───────────────────────────────────┘    │
-│                   ▼                                         │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │          Policy Lookup & Action Decision            │    │
-│  │  • Check IP blacklist (BPF_MAP_LOOKUP)             │    │
-│  │  • Check rate limit thresholds                     │    │
-│  │  • Apply mitigation action:                        │    │
-│  │    - XDP_DROP   (malicious)                        │    │
-│  │    - XDP_PASS   (legitimate)                       │    │
-│  │    - XDP_TX     (challenge-response)               │    │
-│  └────────────────────────────────────────────────────┘    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
 
 **2. Control Plane (User Space - ML & Management)**
 
