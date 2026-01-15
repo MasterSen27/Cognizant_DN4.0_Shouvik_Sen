@@ -96,17 +96,17 @@ Our solution implements a **hybrid cryptographic framework** that combines class
 **B. Protocol Stack**
 ```
 ┌─────────────────────────────────────────┐
-│     Application Layer (Messaging API)    │
+│     Application Layer (Messaging API)   │
 ├─────────────────────────────────────────┤
-│   Session Management & Key Rotation      │
+│   Session Management & Key Rotation     │
 ├─────────────────────────────────────────┤
-│     Hybrid Secure Channel Protocol       │
-│  (Key Exchange + Message Encryption)     │
+│     Hybrid Secure Channel Protocol      │
+│  (Key Exchange + Message Encryption)    │
 ├─────────────────────────────────────────┤
-│      Device Profile Adaptation Layer     │
-│   (Mobile / IoT Gateway / Constrained)   │
+│      Device Profile Adaptation Layer    │
+│   (Mobile / IoT Gateway / Constrained)  │
 ├─────────────────────────────────────────┤
-│        Transport Layer (TCP/UDP)         │
+│        Transport Layer (TCP/UDP)        │
 └─────────────────────────────────────────┘
 ```
 
