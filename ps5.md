@@ -340,298 +340,317 @@ Advantages Over Existing Approaches
 
 ## 6. Differentiation and Unique Value Proposition
 
-### Core Innovation: Strategic Hybrid Architecture
+Strategic Hybrid Architecture This framework uses PQC only where it provides the most security benefit, keeping runtime efficient and lightweight. 
 
-Unlike conventional approaches that apply post-quantum cryptography uniformly across all operations, our solution introduces **contextual PQC deployment**—using quantum-resistant algorithms only where they provide maximum security benefit with minimum performance cost.
+Key Differentiators 
 
-### Key Differentiators
 
-**1. Adaptive Security Profiles**
+1. Adaptive Security Profiles 
 
-The system automatically detects device capabilities and network conditions to select optimal security configurations:
+The protocol changes automatically based on device and network conditions: 
 
-- **Mobile Profile**: Full hybrid KEM + optional Dilithium signatures
-- **Gateway Profile**: Manages PQC sessions for downstream IoT devices
-- **Constrained Profile**: Pre-shared PQC keys, symmetric-only runtime operations
+●	Mobile Profile: hybrid KEM and optional Dilithium signatures 
 
-This adaptability enables a single protocol to serve the entire IoT-to-cloud spectrum, unlike existing solutions that target only high-resource environments.
+●	Gateway Profile: manages PQC sessions for multiple devices 
 
-**2. Temporal PQC Optimization**
+●	Constrained Profile: uses pre-shared PQC keys and symmetric runtime This allows one framework to cover the entire IoT-to-cloud range.
+ 
 
-Post-quantum operations occur only during session establishment (every few hours or days), not per-message. This reduces PQC overhead by 95-99% compared to full PQC messaging while maintaining quantum-resistant forward secrecy throughout the session lifetime.
+2. Temporal PQC Optimization 
 
-**3. Fail-Safe Hybrid Design**
+PQC runs only during session setup, every few hours or days, not per message. This cuts PQC overhead by 95 to 99 percent compared to full PQC while still ensuring quantum-safe forward secrecy. 
 
-The combination of classical (X25519) and post-quantum (Kyber-512) key exchange ensures security even if one component fails:
-- If Kyber is broken: X25519 provides classical security
-- If X25519 is broken by quantum computers: Kyber provides quantum security
-- Both must fail simultaneously for security compromise
 
-This cryptographic agility provides insurance against algorithm-specific vulnerabilities.
+3. Fail-Safe Hybrid Design 
 
-**4. IoT Ecosystem Integration**
+If one component fails, security remains intact: 
 
-Purpose-built for India's growing IoT landscape with specific optimizations for:
-- **Smart Cities**: Secure sensor networks, traffic management, utility monitoring
-- **Healthcare IoT**: Medical device communication, remote patient monitoring
-- **Industrial Control**: SCADA systems, manufacturing automation
-- **Agricultural IoT**: Precision farming sensors, supply chain tracking
+●	If Kyber fails, X25519 still provides classical security 
 
-Existing PQC solutions ignore IoT constraints; classical solutions ignore quantum threats. Our hybrid approach addresses both.
+●	If quantum breaks X25519, Kyber still offers PQ security Security only fails if both components fail at the same time. 
 
-**5. Standards-Based Modularity**
 
-Built entirely on NIST-standardized PQC algorithms (Kyber, Dilithium, ChaCha20), enabling:
-- Easy integration with existing messaging infrastructure
-- Regulatory compliance (anticipated mandates for quantum-resistant crypto)
-- Future algorithm upgrades without protocol redesign
-- Vendor-neutral implementation
+4. IoT Ecosystem Integration 
 
-### Unique Value Proposition Summary
+This framework is designed specifically for India’s IoT ecosystem: 
 
-**For Mobile Users**: Quantum-safe messaging with zero noticeable performance impact—maintain current user experience while protecting against future quantum threats.
+●	Smart Cities: traffic, utilities, monitoring 
 
-**For IoT Developers**: First practical quantum-resistant messaging protocol that works on resource-constrained devices without requiring hardware upgrades.
+●	Healthcare IoT: medical devices, patient monitoring 
 
-**For Enterprises**: Compliance-ready, scalable solution for protecting sensitive communications against harvest now, decrypt later attacks across heterogeneous device fleets.
+●	Industrial control: SCADA and automation 
 
-**For India's Digital Ecosystem**: Indigenous quantum-safe communication framework aligned with Smart Cities, Digital India, and Atmanirbhar Bharat initiatives.
+●	Agriculture IoT: precision farming sensors 
+
+
+5. Standards-Based Modularity 
+
+Built entirely on NIST-standardized algorithms, this allows: 
+
+●	Easy integration into existing infrastructure 
+
+●	Better compliance with regulations 
+
+●	Upgrades without redesign 
+
+●	Vendor neutrality 
+
+
+Unique Value Proposition Summary 
+
+●	Mobile Users: quantum-safe messaging with no noticeable performance impact 
+
+●	IoT Developers: practical PQC messaging without hardware upgrades
+
+●	Enterprises: scalable defense against HNDL attacks 
+
+●	India’s Ecosystem: homegrown quantum-safe security in line with national initiatives 
+
 
 ---
 
 ## 7. Product Roadmap and End-Use Cases
 
-### Development Roadmap
+# Roadmap
 
-**Phase 1: Protocol Design & Architecture Validation (Months 1-2)**
-- Finalize hybrid protocol specification
-- Define device profile categories and adaptation logic
-- Threat modeling and security proof-of-concept
-- Select optimal PQC parameter sets (Kyber-512 vs 768, Dilithium-2 vs 3)
-- **Deliverable**: Technical specification document, security analysis report
+Phase 1: Protocol Design and Architecture Validation (Months 1-2)
 
-**Phase 2: Core Implementation & MVP Development (Months 3-5)**
-- Implement cryptographic core (X25519, Kyber-512, ChaCha20-Poly1305)
-- Develop hybrid key exchange protocol
-- Build session management and key rotation mechanisms
-- Create device capability detection module
-- **Deliverable**: Functional MVP demonstrating Android-to-Android secure messaging
+●	Finalize protocol specification 
 
-**Phase 3: Performance Optimization & IoT Integration (Months 6-8)**
-- Optimize for ARM Cortex processors (mobile, IoT gateways)
-- Implement constrained device support (gateway-assisted mode)
-- Benchmark against classical and full PQC baselines
-- Memory profiling and battery consumption testing
-- **Deliverable**: Multi-device demo (mobile, gateway, sensor), performance benchmarks
+●	Define device profiles and adaptation logic 
 
-**Phase 4: Testing, Security Audit & Deployment Readiness (Months 9-10)**
-- Penetration testing and fuzzing
-- Third-party security audit of cryptographic implementation
-- Interoperability testing with Signal Protocol
-- SDK/API development for developer adoption
-- Documentation: integration guides, API references
-- **Deliverable**: Production-ready library, security audit report, developer SDK
+●	Conduct threat modeling and proof-of-concept security analysis 
 
-**Phase 5: Pilot Deployment & Ecosystem Engagement (Months 11-12)**
-- Pilot with academic institutions (secure research collaboration)
-- Partner with IoT solution providers (smart city, healthcare)
-- Open-source community release (GitHub, developer outreach)
-- Gather real-world performance data and feedback
-- **Deliverable**: Pilot deployment case studies, open-source library release
+●	Choose the best parameter sets (Kyber-512 vs. 768, Dilithium-2 vs.3) 
 
-### End-Use Cases and Target Users
+●	Deliverable: technical specs and security analysis report 
 
-**1. Secure Mobile Messaging Applications**
 
-*Target Users*: General public, privacy-conscious users, journalists, activists
+Phase 2: Core Implementation and MVP (Months 3-5) 
 
-*Application*: Quantum-safe alternative to WhatsApp, Signal for everyday communication
+●	Implement X25519, Kyber-512, and ChaCha20-Poly1305 core 
 
-*Key Features*:
-- End-to-end encrypted messaging with quantum resistance
-- Group chats with forward secrecy
-- File sharing (documents, images) with PQC encryption
-- Voice/video call integration (session keys established via hybrid KEM)
+●	Build hybrid handshake protocol 
 
-*Impact*: Protect 50+ million users from future quantum decryption of today's messages
+●	Manage sessions and key rotation 
 
----
+●	Create device capability detection module 
 
-**2. Healthcare IoT Communication**
+●	Deliverable: Android-to-Android messaging MVP 
 
-*Target Users*: Hospitals, telemedicine platforms, remote patient monitoring services
 
-*Application*: Secure communication between medical IoT devices and cloud servers
+Phase 3: Optimization and IoT Integration (Months 6-8) 
 
-*Deployment Scenario*:
-- Wearable health monitors (heart rate, glucose) → Gateway → Hospital cloud
-- Gateway performs hybrid key exchange with cloud
-- Constrained wearables use symmetric encryption with PQC-derived session keys
-- Ensures HIPAA/DPDP Act compliance with quantum-resistant encryption
+●	Optimize for ARM processors 
 
-*Impact*: Secure health data for millions of patients in India's growing telemedicine ecosystem
+●	Create constrained device gateway-assisted mode 
 
----
+●	Benchmark against classical and full PQC solutions  
 
-**3. Smart City Infrastructure**
+●	Test memory and battery performance 
 
-*Target Users*: Municipal corporations, urban planners, infrastructure operators
+●	Deliverable: multi-device demo and benchmarks 
 
-*Application*: Secure sensor networks for smart cities (traffic, environment, utilities)
 
-*Deployment Scenario*:
-- 10,000+ IoT sensors per city (traffic cameras, air quality, water meters)
-- City gateways perform hybrid key exchange with central command center
-- Sensors communicate via lightweight symmetric encryption
-- Protects critical infrastructure data from quantum-enabled cyber attacks
+Phase 4: Testing, Audit, and Deployment Readiness (Months 9-10) 
 
-*Impact*: Foundational security for India's 100 Smart Cities Mission
+●	Conduct penetration testing and fuzzing 
 
----
+●	Complete a third-party security audit 
 
-**4. Financial Services & Digital Payments**
+●	Run interoperability tests with Signal Protocol 
 
-*Target Users*: Banks, fintech companies, UPI service providers
+●	Develop SDK/API and full documentation 
 
-*Application*: Quantum-safe mobile banking and payment authentication
+●	Deliverable: audited production-ready crypto library and SDK 
 
-*Deployment Scenario*:
-- Mobile banking apps establish PQC-secured sessions for transactions
-- UPI authentication messages protected against future decryption
-- ATM-to-server communication upgraded to hybrid protocol
-- Protects against harvest now, decrypt later attacks on financial data
 
-*Impact*: Secure India's 8+ billion monthly UPI transactions against quantum threats
+Phase 5: Pilot Deployment and Community Engagement (Months 11-12) 
 
----
+●	Roll out a pilot in academic settings 
 
-**5. Government & Defense Communications**
+●	Establish partnerships with IoT providers 
 
-*Target Users*: Government agencies, defense establishments, critical infrastructure operators
+●	Release open-source version 
 
-*Application*: Secure classified communications and command-control systems
+●	Gather real-world feedback 
 
-*Deployment Scenario*:
-- Mobile devices for government officials with quantum-safe messaging
-- Secure communication between field units and headquarters
-- Integration with existing encrypted communication systems
-- Meets stringent security requirements for national security applications
+●	Deliverable: pilot case studies and public library release 
 
-*Impact*: Protect sensitive government communications with future-proof encryption
+# End-Use Cases and Target Users 
 
----
+1. Secure Mobile Messaging 
 
-**6. Industrial IoT & SCADA Systems**
+●	Target: public, privacy-focused users, journalists, activists 
 
-*Target Users*: Manufacturing plants, power grids, oil & gas facilities
+●	Use: quantum-safe alternative to WhatsApp/Signal 
 
-*Application*: Secure communication for industrial control systems
+●	Features: end-to-end encryption, group chats, file sharing, voice/video integration 
 
-*Deployment Scenario*:
-- SCADA systems controlling critical infrastructure (power plants, water treatment)
-- PLCs (Programmable Logic Controllers) → Industrial gateway → Control center
-- Prevents quantum-enabled attacks on critical industrial processes
-- Retrofit existing systems via gateway-assisted security
+●	Impact: protects over 50 million users from potential quantum decryption 
 
-*Impact*: Harden critical infrastructure against sophisticated nation-state quantum threats
 
----
+2. Healthcare IoT Communication 
 
-**7. Academic & Research Collaboration**
+●	Target: hospitals and telemedicine platforms 
 
-*Target Users*: Universities, research institutions, R&D labs
+●	Use: secure messaging between medical devices and the cloud 
 
-*Application*: Secure sharing of research data and intellectual property
+●	Scenario: wearables to gateway to hospital cloud 
 
-*Deployment Scenario*:
-- Collaborative research platforms with quantum-safe encryption
-- Secure file sharing for sensitive research (pharmaceuticals, defense tech)
-- Protection of patent-pending innovations and trade secrets
-- Inter-institutional secure communication networks
+●	Impact: secures patient data and ensures DPDP/HIPAA compliance 
 
-*Impact*: Enable secure research collaboration while protecting IP from long-term quantum threats
 
----
+3. Smart City Infrastructure 
 
-### Scalability and Market Potential
+●	Target: municipal bodies, infrastructure operators 
 
-**Addressable Market**:
-- 750 million smartphone users in India
-- 1.1 billion IoT devices projected by 2025 (India)
-- Global secure messaging market: $8.5 billion by 2027
-- IoT security market: $36.6 billion by 2025
+●	Use: secure messages for city sensor networks 
 
-**Adoption Strategy**:
-- Open-source core library for community-driven adoption
-- Commercial SDK for enterprise deployments
-- Government partnerships for critical infrastructure pilots
-- Academic collaborations for research validation
+●	Scenario: over 10,000 sensors per city with secure gateways 
+
+●	Impact: supports India’s Smart Cities mission 
+
+
+4. Financial Services and Digital Payments 
+
+●	Target: banks, fintech, UPI providers 
+
+●	Use: quantum-safe banking authentication 
+
+●	Impact: protects more than 8 billion monthly UPI transactions in India 
+
+
+5. Government and Defense 
+
+●	Target: agencies, defense, and critical infrastructure 
+
+●	Use: quantum-safe classified communication 
+
+●	Impact: strengthens national security messaging 
+
+
+6. Industrial IoT and SCADA 
+
+●	Target: manufacturing, grids, oil and gas 
+
+●	Use: prevents quantum-enabled attacks on operations 
+
+●	Impact: fortifies India’s industrial backbone 
+
+
+7. Academic and Research Collaboration 
+
+●	Target: universities and research labs 
+
+●	Use: secure collaboration and protection of intellectual property 
+
+●	Impact: allows secure sharing of patent-pending and sensitive research 
+
+Scalability and Market Potential 
+
+Addressable Market 
+
+●	750 million smartphone users in India 
+
+●	1.1 billion IoT devices in India by 2026 
+
+●	Secure messaging market projected to reach $8.5 billion by 2027 
+
+●	IoT security market expected to be $36.6 billion by 2026 Adoption Strategy - Open-source core library 
+
+●	Commercial enterprise SDK - Government pilots - Academic partnerships for validation 
+
 
 ---
 
 ## 8. Impact, Scalability, and Sustainability
 
-### National Impact
+### National Impact 
 
-**Digital India Alignment**:
-- Supports government's push for secure digital infrastructure
-- Enables quantum-safe Digital India services (Aadhaar, DigiLocker, UMANG)
-- Protects citizen data under DPDP Act with future-proof encryption
-- Contributes to Atmanirbhar Bharat through indigenous cryptographic innovation
+Digital India Initiative 
 
-**Cybersecurity Ecosystem Development**:
-- Establishes India as early adopter of PQC technology
-- Creates knowledge base for post-quantum security in academia
-- Generates high-skilled employment in cryptography and security engineering
-- Attracts global attention to Indian cybersecurity innovation
+●	Safeguards Digital India infrastructure 
 
-### Scalability
+●	Protects citizen data under DPDP Act 
 
-**Technical Scalability**:
-- Horizontal: Protocol designed for billions of devices (mobile + IoT)
-- Vertical: Supports resource spectrum from 32KB sensors to cloud servers
-- Geographic: Operates efficiently on low-bandwidth networks (rural India, IoT)
+●	Facilitates quantum-safe Aadhaar, DigiLocker, and UMANG ecosystem 
 
-**Ecosystem Scalability**:
-- Open-source model enables global developer community contributions
-- Modular architecture allows customization for specific industries
-- Cloud-native design supports SaaS deployment models
-- SDK/API enables rapid integration by third-party developers
+●	Supports Atmanirbhar Bharat through local innovation 
 
-### Sustainability
+Ecosystem Development 
 
-**Long-term Security**:
-- 10-15 year protection against quantum threats (industry consensus on quantum timeline)
-- Cryptographic agility enables algorithm upgrades without protocol overhaul
-- Forward secrecy ensures past communications remain secure even if keys compromised
+●	Positions India as a leader in PQC adoption 
 
-**Economic Sustainability**:
-- Low deployment cost (software-only, no hardware upgrades required)
-- Minimal operational overhead (same infrastructure as classical messaging)
-- Potential monetization paths:
-  - Enterprise licensing for commercial deployments
-  - Consulting services for custom integrations
-  - Support contracts for critical infrastructure deployments
+●	Strengthens academic knowledge of PQC 
 
-**Environmental Sustainability**:
-- Minimal battery impact preserves mobile device lifecycle
-- Efficient resource usage reduces energy consumption in data centers
-- No requirement for specialized quantum-resistant hardware
+●	Creates skilled jobs in security and cryptography 
 
-### Contribution to Global Standards
+●	Attracts global attention to India’s security innovation 
 
-- Aligns with NIST PQC standardization efforts
-- Potential submission to IETF for protocol standardization
-- Reference implementation for hybrid PQC messaging in academic literature
-- Collaboration with international cryptography community
+### Scalability 
+
+Technical Scalability 
+
+●	Designed to support billions of devices 
+
+●	Functions from 32KB sensors to cloud servers 
+
+●	Optimized for rural low-bandwidth networks 
+
+Ecosystem Scalability 
+
+●	Open-source contributions allow rapid development 
+
+●	Modular design supports customization for industries 
+
+●	Cloud-native ready, accommodates SaaS deployments 
+
+●	SDK/API allows for third-party integration 
+### Sustainability 
+
+Long-Term Security 
+
+●	Anticipated 10-15 years of quantum resilience 
+
+●	Cryptographic flexibility for future upgrades 
+
+●	Forward secrecy protects old sessions even if compromised 
+
+Economic Sustainability 
+
+●	Software-only solution with no hardware upgrades necessary 
+
+●	Minimal operational changes from classical messaging 
+
+●	Monetization through enterprise licensing, consulting, and support contracts 
+
+Environmental Sustainability 
+
+●	Low battery impact increases device lifespan 
+
+●	Efficient cryptography reduces data center costs 
+
+●	No need for quantum-specific hardware 
+
+### Global Standards Contribution 
+
+●	Aligns with NIST PQC standards 
+
+●	Potential for future IETF standardization 
+
+●	Reference implementation for academic use 
+
+●	Supports global collaboration in cryptography 
+
 
 ---
 
 ## Conclusion
 
-This hybrid lightweight post-quantum messaging framework represents a practical, deployable solution to one of cybersecurity's most pressing challenges: securing communications against quantum computers without sacrificing usability. By strategically combining classical and post-quantum cryptography, the proposed system achieves quantum resistance while remaining feasible for mobile and IoT environments.
+This hybrid lightweight post-quantum messaging framework tackles one of today’s most pressing cybersecurity issues: safeguarding communications from quantum threats without losing user-friendliness. By applying PQC only when necessary, this system achieves strong quantum resistance while remaining practical for mobile and IoT environments. The project is notable for its adaptive security, ease of deployment, and suitability for India’s growing digital infrastructure. 
 
-The solution is innovative in its adaptive, context-aware approach to security, technically feasible within the challenge timeline, and directly aligned with India's digital infrastructure priorities. With a clear development roadmap, well-defined use cases, and strong alignment with national cybersecurity goals, this project has the potential to make meaningful contributions to India's quantum-safe digital future.
+With a clear roadmap and strong real-world applications, it can significantly contribute to a future where digital communications are quantum secure.
 
 ---
 
